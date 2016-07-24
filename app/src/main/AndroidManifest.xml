@@ -38,6 +38,17 @@
 
 
 
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-feature android:name="android.hardware.camera"/>
+
+    <uses-feature android:name = "android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
+
     <application
         android:name="nice.com.jzs.background.JICHEApplication"
         android:allowBackup="true"
@@ -143,9 +154,6 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <!-- 网页地址 -->
-        <activity
-            android:name=".core.WapActivity_"
-            android:screenOrientation="portrait" />
 
         <activity
             android:name="nice.com.jzs.ui.main.MainActivity_"
@@ -232,6 +240,14 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
+
+
+        <activity
+            android:name=".camera.ActivityCapture"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
 
 
     </application>

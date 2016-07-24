@@ -19,6 +19,9 @@ import cn.finalteam.loadingviewfinal.OnLoadMoreListener;
 public class ShopListFragment extends AbstractFragment implements SwipeRefreshLayout.OnRefreshListener, OnLoadMoreListener {
 
 
+
+
+
     @Override
     public void loadMore() {
 
