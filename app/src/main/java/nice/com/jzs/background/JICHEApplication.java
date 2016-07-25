@@ -7,6 +7,7 @@ import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
 
+import nice.com.jzs.BuildConfig;
 import nice.com.nice_library.CoreApplication;
 import nice.com.nice_library.util.IntentUtil;
 import nice.com.nice_library.util.ToastUtil;
@@ -54,22 +55,22 @@ public class JICHEApplication extends CoreApplication {
 
         mApplication = this;
 
-//        getAccount();
-//        /***
-//         * 初始化定位sdk，建议在Application中创建
-//         */
-//
-//        AppInfo.retrieveAppInfo(this);
-//
-//        initTalkingData();
-//
-//        initWXAPI();
-//
+        getAccount();
+        /***
+         * 初始化定位sdk，建议在Application中创建
+         */
+
+        AppInfo.retrieveAppInfo(this);
+
+        initTalkingData();
+
+        initWXAPI();
+
 //        is_develop_flag = BuildConfig.LOG_DEBUG;
-//
+
 //        CoreConstant.IS_TEST_FLAG = is_develop_flag;
-//
-//        initOkHttpClient();
+
+        initOkHttpClient();
 
     }
 

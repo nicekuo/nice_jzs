@@ -1,10 +1,10 @@
 package nice.com.jzs.ui.main;
 
-import nice.com.nice_library.bean.BaseBean;
+import java.util.List;
+
 import nice.com.jzs.ui.doctors.DoctorItemBean;
 import nice.com.jzs.ui.news.NewsListItemBean;
-
-import java.util.List;
+import nice.com.nice_library.bean.BaseBean;
 
 /**
  * Created by ${nice} on ${2016年04月29日14:09:09}.
@@ -14,7 +14,7 @@ public class HomeBaen extends BaseBean {
 
     /**
      * banner : [{"img":"http://img5.imgtn.bdimg.com/it/u=3288727571,1668503812&fm=21&gp=0.jpg","type":2,"url":"http://life.yxlady.com/health/201510/249201.shtml"}]
-     * news : {"title":"头条咨询","news_list":[{"img":"http://static.i3.xywy.com/cms/20141015/1eb0f5cb008bc21b439653566323f9f517388.jpg","content":"脊柱侧弯到底是怎么样一种病?是怎么引起的?","source":"脊诊室主编","like_count":123,"heart_count":43},{"img":"http://static.i3.xywy.com/cms/20141015/1eb0f5cb008bc21b439653566323f9f517388.jpg","content":"脊柱侧弯到底是怎么样一种病?是怎么引起的?","source":"脊诊室主编","like_count":123,"heart_count":43},{"img":"http://static.i3.xywy.com/cms/20141015/1eb0f5cb008bc21b439653566323f9f517388.jpg","content":"脊柱侧弯到底是怎么样一种病?是怎么引起的?","source":"脊诊室主编","like_count":123,"heart_count":43}]}
+     * news : {"title":"头条资讯","news_list":[{"img":"http://static.i3.xywy.com/cms/20141015/1eb0f5cb008bc21b439653566323f9f517388.jpg","content":"脊柱侧弯到底是怎么样一种病?是怎么引起的?","source":"脊诊室主编","like_count":123,"heart_count":43,"is_like":0,"is_heart":0},{"img":"http://static.i3.xywy.com/cms/20141015/1eb0f5cb008bc21b439653566323f9f517388.jpg","content":"脊柱侧弯到底是怎么样一种病?是怎么引起的?","source":"脊诊室主编","like_count":123,"heart_count":43,"is_like":1,"is_heart":0},{"img":"http://static.i3.xywy.com/cms/20141015/1eb0f5cb008bc21b439653566323f9f517388.jpg","content":"脊柱侧弯到底是怎么样一种病?是怎么引起的?","source":"脊诊室主编","like_count":123,"heart_count":43,"is_like":0,"is_heart":1}]}
      * doctor : {"title":"联系医生","doctor_list":[{"avatar":"http://money.gucheng.com/UploadFiles_6503/201508/2015082523214635.jpg","name":"赵一鸣","title":"主任医师","hospital":"北京协和医院","doctor_id":"123456"},{"avatar":"http://img.deikang.com/images/201310/21/1382347108_96245200.jpg","name":"于佳佳","title":"医师","hospital":"宣武医院","doctor_id":"123456"},{"avatar":"http://img.taopic.com/uploads/allimg/140704/240455-140F406352283.jpg","name":"王蕾","title":"主治医师","hospital":"中国医科大学附属医院","doctor_id":"123456"}]}
      */
 
@@ -30,8 +30,8 @@ public class HomeBaen extends BaseBean {
 
     public static class DataBean {
         /**
-         * title : 头条咨询
-         * news_list : [{"img":"http://static.i3.xywy.com/cms/20141015/1eb0f5cb008bc21b439653566323f9f517388.jpg","content":"脊柱侧弯到底是怎么样一种病?是怎么引起的?","source":"脊诊室主编","like_count":123,"heart_count":43},{"img":"http://static.i3.xywy.com/cms/20141015/1eb0f5cb008bc21b439653566323f9f517388.jpg","content":"脊柱侧弯到底是怎么样一种病?是怎么引起的?","source":"脊诊室主编","like_count":123,"heart_count":43},{"img":"http://static.i3.xywy.com/cms/20141015/1eb0f5cb008bc21b439653566323f9f517388.jpg","content":"脊柱侧弯到底是怎么样一种病?是怎么引起的?","source":"脊诊室主编","like_count":123,"heart_count":43}]
+         * title : 头条资讯
+         * news_list : [{"img":"http://static.i3.xywy.com/cms/20141015/1eb0f5cb008bc21b439653566323f9f517388.jpg","content":"脊柱侧弯到底是怎么样一种病?是怎么引起的?","source":"脊诊室主编","like_count":123,"heart_count":43,"is_like":0,"is_heart":0},{"img":"http://static.i3.xywy.com/cms/20141015/1eb0f5cb008bc21b439653566323f9f517388.jpg","content":"脊柱侧弯到底是怎么样一种病?是怎么引起的?","source":"脊诊室主编","like_count":123,"heart_count":43,"is_like":1,"is_heart":0},{"img":"http://static.i3.xywy.com/cms/20141015/1eb0f5cb008bc21b439653566323f9f517388.jpg","content":"脊柱侧弯到底是怎么样一种病?是怎么引起的?","source":"脊诊室主编","like_count":123,"heart_count":43,"is_like":0,"is_heart":1}]
          */
 
         private NewsBean news;
@@ -81,6 +81,8 @@ public class HomeBaen extends BaseBean {
              * source : 脊诊室主编
              * like_count : 123
              * heart_count : 43
+             * is_like : 0
+             * is_heart : 0
              */
 
             private List<NewsListItemBean> news_list;

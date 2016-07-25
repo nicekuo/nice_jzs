@@ -1,4 +1,6 @@
 {
+  "result":0,
+  "error_info":"",
   "data":{
     "banner": [
       {
@@ -63,7 +65,6 @@
         }
       ]
     }
-  },
-  "result":1,
-  "error_info":""
+  }
+
 }
