@@ -3,6 +3,7 @@ package nice.com.jzs.ui.doctors;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -30,7 +31,7 @@ public class ViewDoctorListItem extends LinearLayout {
         initView(context);
     }
 
-    private void initView(Context context) {
+    private void initView(final Context context) {
         LayoutInflater inflater = LayoutInflater.from(context);
         inflater.inflate(R.layout.view_doctor_list_item, this, true);
         avatar = (SFImageView) findViewById(R.id.avatar);
@@ -38,6 +39,12 @@ public class ViewDoctorListItem extends LinearLayout {
         title = (TextView) findViewById(R.id.title);
         hospital = (TextView) findViewById(R.id.hospital);
         consultation = (TextView) findViewById(R.id.consultation);
+        setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityDoctorPage_.intent(context).start();
+            }
+        });
     }
 
     public void setData(DoctorItemBean itemBean){

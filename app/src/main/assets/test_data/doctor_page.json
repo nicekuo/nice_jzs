@@ -10,7 +10,7 @@
       "doctor_id":"123456",
       "consultation_times":"149",
       "follow_member_num":56,
-      "article":60
+      "publish_article_num":60
     },
     "about_article":{
       "title": "相关文章",
