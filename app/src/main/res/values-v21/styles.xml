@@ -9,4 +9,8 @@
         <item name="android:colorPrimaryDark">@color/blue</item>
     </style>
 
+    <style name="teshu_color_style" parent="AppTheme">
+        <item name="android:colorPrimaryDark">@color/dark_gray</item> <!-- app背影色 -->
+    </style>
+
 </resources>

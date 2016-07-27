@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import nice.com.jzs.camera.ActivityCapture;
+import nice.com.jzs.ui.doctors.ActivityDoctorsGroup_;
+import nice.com.jzs.ui.news.ActivityNewsGroup_;
 import nice.com.nice_library.bean.BaseBean;
 import nice.com.nice_library.nice_view.ViewBannerAutoScroll;
 import nice.com.jzs.R;
@@ -146,7 +148,12 @@ public class MainHomeFragmentNew extends AbstractFragment {
 
         if (homeBaen.getData().getNews() != null && homeBaen.getData().getNews().getNews_list() != null) {
             ViewHomeTitle homeTitle = new ViewHomeTitle(getActivity());
-            homeTitle.setData(R.drawable.icon_news, homeBaen.getData().getNews().getTitle());
+            homeTitle.setData(R.drawable.icon_news, homeBaen.getData().getNews().getTitle(), new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ActivityNewsGroup_.intent(getActivity()).start();
+                }
+            });
             content_container.addView(homeTitle);
             if (homeBaen.getData().getNews().getNews_list().size() > 0) {
                 for (NewsListItemBean itemBean : homeBaen.getData().getNews().getNews_list()) {
@@ -159,7 +166,12 @@ public class MainHomeFragmentNew extends AbstractFragment {
 
         if (homeBaen.getData().getDoctor() != null && homeBaen.getData().getDoctor().getDoctor_list() != null) {
             ViewHomeTitle homeTitle = new ViewHomeTitle(getActivity());
-            homeTitle.setData(R.drawable.icon_doctor, homeBaen.getData().getDoctor().getTitle());
+            homeTitle.setData(R.drawable.icon_doctor, homeBaen.getData().getDoctor().getTitle(), new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ActivityDoctorsGroup_.intent(getActivity()).start();
+                }
+            });
             content_container.addView(homeTitle);
             LinearLayout linearLayout = new LinearLayout(getActivity());
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);

@@ -31,6 +31,7 @@
             android:textSize="14sp" />
 
         <ImageView
+            android:id="@+id/icon_arrow"
             android:layout_width="@dimen/dipX20"
             android:layout_height="@dimen/dipX20"
             android:layout_gravity="center_vertical"

@@ -4,7 +4,7 @@
     <color name="app_bg_color">#f4f4f4</color>
     <color name="valid_code">#FFBB22</color>
     <color name="bg_gray">#f1f1ed</color>  <!-- 灰色 -->
-    <color name="line_color">#999999</color>
+    <color name="line_color">#DBDADA</color>
     <color name="red_clolor">#ff6666</color>
     <color name="blue_color">#0096db</color>
     <color name="orange_color">#FF6100</color>

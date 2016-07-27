@@ -1,6 +1,7 @@
 package nice.com.jzs.ui.main;
 
 import android.content.Context;
+import android.media.Image;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ public class ViewHomeTitle extends LinearLayout {
     private ImageView title_icon;
     private TextView title;
     private Context context;
+    private ImageView icon_arrow;
 
     public ViewHomeTitle(Context context) {
         super(context);
@@ -38,19 +40,22 @@ public class ViewHomeTitle extends LinearLayout {
         inflater.inflate(R.layout.view_home_title, this, true);
         title_icon = (ImageView) findViewById(R.id.title_icon);
         title = (TextView) findViewById(R.id.title);
+        icon_arrow = (ImageView) findViewById(R.id.icon_arrow);
     }
 
-    public void setData(final int img_id, String title){
+    public void setHideArrow(){
+        icon_arrow.setVisibility(View.INVISIBLE);
+    }
+
+    public void setData(final int img_id, String title, final OnClickListener listener){
         title_icon.setImageResource(img_id);
         this.title.setText(title);
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (R.drawable.icon_news == img_id){
-                    ActivityNewsGroup_.intent(context).start();
-                }else {
-                    ActivityDoctorsGroup_.intent(context).start();
-                }
+               if (listener!=null){
+                   listener.onClick(view);
+               }
             }
         });
     }

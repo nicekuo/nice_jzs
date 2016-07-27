@@ -680,6 +680,10 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
         titleView.setTitleLeftButtonListener(listener);
     }
 
+    protected void setTitleViewBackgroundColor(int color){
+        titleView.setBackGroundColor(color);
+    }
+
     /**
      * 设置左按钮背景和事件
      */

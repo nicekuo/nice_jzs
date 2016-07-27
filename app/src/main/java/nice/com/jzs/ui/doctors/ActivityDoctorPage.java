@@ -1,6 +1,7 @@
 package nice.com.jzs.ui.doctors;
 
-import android.content.Context;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -11,9 +12,11 @@ import org.androidannotations.annotations.ViewById;
 import java.util.HashMap;
 import java.util.Map;
 
+import butterknife.ButterKnife;
 import nice.com.jzs.R;
 import nice.com.jzs.background.RequestAPI;
 import nice.com.jzs.core.AbstractActivity;
+import nice.com.jzs.ui.main.ViewHomeTitle;
 import nice.com.nice_library.bean.BaseBean;
 import nice.com.nice_library.widget.image.SFImageView;
 
@@ -45,9 +48,12 @@ public class ActivityDoctorPage extends AbstractActivity {
     LinearLayout doctorMore;
     @ViewById(R.id.doctor_info)
     LinearLayout doctorInfo;
+    @ViewById(R.id.container)
+    LinearLayout container;
 
     @AfterViews
     void init() {
+        setTitleViewBackgroundColor(Color.parseColor("#545D70"));
         getData();
     }
 
@@ -57,7 +63,7 @@ public class ActivityDoctorPage extends AbstractActivity {
             @Override
             public void loadSuccess(BaseBean bean) {
                 DoctorPageBean pageBean = (DoctorPageBean) bean;
-                if (pageBean != null){
+                if (pageBean != null) {
                     updateView(pageBean);
                 }
             }
@@ -69,25 +75,60 @@ public class ActivityDoctorPage extends AbstractActivity {
         }.post(true, RequestAPI.API_JZB_DOCTORS_PAGE, params, DoctorPageBean.class);
     }
 
-    private void updateView(DoctorPageBean pageBean){
-        if (pageBean.getData() == null){
+    private void updateView(DoctorPageBean pageBean) {
+        if (pageBean.getData() == null) {
             return;
         }
 
-        if (pageBean.getData().getDoctor_info()!=null){
+        if (pageBean.getData().getDoctor_info() != null) {
             DoctorPageBean.DataBean.DoctorInfoBean doctorInfoBean = pageBean.getData().getDoctor_info();
             setTitleName(doctorInfoBean.getName());
             avatar.SFSetImageUrl(doctorInfoBean.getAvatar());
             hospital.setText(doctorInfoBean.getHospital());
             title.setText(doctorInfoBean.getTitle());
-            followMemberCount.setText(doctorInfoBean.getFollow_member_num()+"人"+"\n"+"关注");
-            publishArticleNum.setText(doctorInfoBean.getPublish_article_num()+"次"+"\n"+"咨询");
-            consultationTimes.setText(doctorInfoBean.getConsultation_times()+"篇"+"\n"+"文章");
+            followMemberCount.setText(doctorInfoBean.getFollow_member_num() + "人" + "\n" + "关注");
+            publishArticleNum.setText(doctorInfoBean.getPublish_article_num() + "次" + "\n" + "咨询");
+            consultationTimes.setText(doctorInfoBean.getConsultation_times() + "篇" + "\n" + "文章");
         }
+
+        if (pageBean.getData().getAbout_article() != null && pageBean.getData().getAbout_article().getArticle_list() != null) {
+            DoctorPageBean.DataBean.AboutArticleBean aboutArticleBean = pageBean.getData().getAbout_article();
+            ViewHomeTitle viewHomeTitle = new ViewHomeTitle(ActivityDoctorPage.this);
+            viewHomeTitle.setHideArrow();
+            viewHomeTitle.setData(R.drawable.icon_news, aboutArticleBean.getTitle(), null);
+            container.addView(viewHomeTitle);
+            for (DoctorPageBean.DataBean.AboutArticleBean.ArticleListBean listBean : pageBean.getData().getAbout_article().getArticle_list()) {
+                ViewDoctorPageArticleItem articleItem = new ViewDoctorPageArticleItem(ActivityDoctorPage.this);
+                articleItem.setData(listBean);
+                container.addView(articleItem);
+            }
+        }
+
+        if (pageBean.getData().getPublish_paper() != null && pageBean.getData().getPublish_paper().getPaper_list() != null) {
+            DoctorPageBean.DataBean.PublishPaperBean publishPaperBean = pageBean.getData().getPublish_paper();
+            ViewHomeTitle viewHomeTitle = new ViewHomeTitle(ActivityDoctorPage.this);
+            viewHomeTitle.setHideArrow();
+            viewHomeTitle.setData(R.drawable.icon_news, publishPaperBean.getTitle(), null);
+            container.addView(viewHomeTitle);
+            for (DoctorPageBean.DataBean.PublishPaperBean.PaperListBean listBean : pageBean.getData().getPublish_paper().getPaper_list()) {
+                ViewDoctorPagePublishPaperItem pagePublishPaperItem = new ViewDoctorPagePublishPaperItem(ActivityDoctorPage.this);
+                pagePublishPaperItem.setData(listBean);
+                container.addView(pagePublishPaperItem);
+            }
+        }
+
+
     }
 
     @Override
     protected void onClickBack() {
 
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }
