@@ -97,6 +97,7 @@ public class RequestAPI {
     public static final String API_JZB_DOCTORS_GROUP = "develop_doctor/group";
     public static final String API_JZB_DOCTORS_LIST = "develop_doctor/list";
     public static final String API_JZB_DOCTORS_PAGE = "develop_doctor/page";
+    public static final String API_JZB_DOCTORS_VISIT_TIME = "develop_doctor/visit_time";
 
 
 

@@ -34,16 +34,14 @@
                 />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <nice.com.nice_library.widget.container.ViewContainer
+            android:id="@+id/container"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
 
-
-
-
-        </LinearLayout>
+        </nice.com.nice_library.widget.container.ViewContainer>
 
 
 

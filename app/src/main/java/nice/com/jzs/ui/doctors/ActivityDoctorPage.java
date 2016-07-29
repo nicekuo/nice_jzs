@@ -2,6 +2,7 @@ package nice.com.jzs.ui.doctors;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -55,6 +56,12 @@ public class ActivityDoctorPage extends AbstractActivity {
     void init() {
         setTitleViewBackgroundColor(Color.parseColor("#545D70"));
         getData();
+        visitTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityDoctorVisitTime_.intent(ActivityDoctorPage.this).start();
+            }
+        });
     }
 
     private void getData() {
