@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_color"
+    android:orientation="vertical">
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dip"
+        android:background="@color/app_bg_color">
+
+    </View>
+
+
+    <RadioGroup
+        android:id="@+id/group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="性别"
+        android:layout_marginTop="@dimen/dipX15"
+        android:layout_marginLeft="@dimen/dipX15"
+        >
+
+        <RadioButton
+            android:id="@+id/one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_333333"
+            android:text="男"
+            />
+
+        <RadioButton
+            android:id="@+id/two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_333333"
+            android:text="女"
+            />
+
+    </RadioGroup>
+
+
+
+
+
+    <TextView
+        android:id="@+id/id_btn_login"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/dipX15"
+        android:layout_marginRight="@dimen/dipX15"
+        android:layout_height="@dimen/dipX45"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dip"
+        android:gravity="center"
+        android:background="@color/blue"
+        android:text="下一步"
+        android:textColor="@color/white" />
+
+
+
+</LinearLayout>

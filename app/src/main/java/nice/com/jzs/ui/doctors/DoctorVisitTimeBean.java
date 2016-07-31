@@ -11,7 +11,7 @@ public class DoctorVisitTimeBean extends BaseBean {
 
 
     /**
-     * during  : 上午8:30-11:30,下午13:30-17:30。
+     * during_time : 上午8:30-11:30,下午13:30-17:30。
      * tips : 2016年6月9日外出学习，不坐诊。
      * visit_times : [{"id":11,"time":"周一上午","is_visit":1},{"id":21,"time":"周二上午","is_visit":0},{"id":31,"time":"周三上午","is_visit":0},{"id":41,"time":"周四上午","is_visit":1},{"id":51,"time":"周五上午","is_visit":1},{"id":12,"time":"周一下午","is_visit":0},{"id":22,"time":"周二下午","is_visit":0},{"id":32,"time":"周三下午","is_visit":1},{"id":42,"time":"周四下午","is_visit":0},{"id":52,"time":"周五下午","is_visit":1}]
      */
@@ -27,7 +27,7 @@ public class DoctorVisitTimeBean extends BaseBean {
     }
 
     public static class DataBean {
-        private String during;
+        private String during_time;
         private String tips;
         /**
          * id : 11
@@ -37,12 +37,12 @@ public class DoctorVisitTimeBean extends BaseBean {
 
         private List<VisitTimesBean> visit_times;
 
-        public String getDuring() {
-            return during;
+        public String getDuring_time() {
+            return during_time;
         }
 
-        public void setDuring(String during) {
-            this.during = during;
+        public void setDuring_time(String during_time) {
+            this.during_time = during_time;
         }
 
         public String getTips() {

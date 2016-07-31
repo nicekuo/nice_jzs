@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_color"
+    android:orientation="vertical">
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dip"
+        android:background="@color/app_bg_color">
+
+    </View>
+
+    <EditText
+        android:id="@+id/id_ev_phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dipX45"
+        android:background="@color/white"
+        android:hint="@string/hint_input_phone_number"
+        android:maxLines="1"
+        android:padding="@dimen/dipX5"
+        android:textSize="@dimen/txt_size_item_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dip"
+        android:background="@color/app_bg_color">
+
+    </View>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dipX15"
+        android:paddingRight="@dimen/dipX15"
+        android:layout_height="@dimen/common_button_height">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dipX5"
+            android:text="我已阅读并接受《协议事宜》"
+            />
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/id_btn_login"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/dipX15"
+        android:layout_marginRight="@dimen/dipX15"
+        android:layout_height="@dimen/dipX45"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dip"
+        android:gravity="center"
+        android:background="@color/blue"
+        android:text="注册"
+        android:textColor="@color/white" />
+
+
+
+</LinearLayout>

@@ -58,10 +58,10 @@ public class ActivityDoctorVisitTime extends AbstractActivity {
                 ViewDoctorVisitTimeItem timeItem = new ViewDoctorVisitTimeItem(ActivityDoctorVisitTime.this);
                 int index = visitTimeBean.getData().getVisit_times().indexOf(itemBean);
                 int color = getResources().getColor(R.color.white);
-                if (index/2 == 0){
+                if (index%2 == 0){
                     color = getResources().getColor(R.color.white);
                 }else {
-                    color = getResources().getColor(R.color.text_666666);
+                    color = getResources().getColor(R.color.text_999999);
                 }
                 timeItem.setData(color,itemBean.getIs_visit());
                 viewContainer.addView(timeItem);

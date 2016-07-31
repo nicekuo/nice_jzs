@@ -255,6 +255,50 @@
             android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
+        <activity
+            android:name="nice.com.jzs.ui.register.ActivityRegisterOne_"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/teshu_color_style"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity
+            android:name="nice.com.jzs.ui.register.ActivityRegisterTwo_"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/teshu_color_style"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity
+            android:name="nice.com.jzs.ui.register.ActivityRegisterPassword_"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/teshu_color_style"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+
+        <activity
+            android:name="nice.com.jzs.ui.register.ActivityRegisterNickName_"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/teshu_color_style"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+
+        <activity
+            android:name="nice.com.jzs.ui.register.ActivityRegisterGender_"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/teshu_color_style"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity
+            android:name="nice.com.jzs.ui.register.ActivityRegisterBorn_"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/teshu_color_style"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
 
         <activity
             android:name=".camera.ActivityCapture"

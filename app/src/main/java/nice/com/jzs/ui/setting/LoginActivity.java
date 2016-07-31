@@ -13,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import nice.com.jzs.ui.register.ActivityRegisterOne_;
 import nice.com.nice_library.bean.BaseBean;
 import nice.com.nice_library.util.IntentUtil;
 import nice.com.nice_library.util.StringUtil;
@@ -120,7 +121,8 @@ public class LoginActivity extends AbstractActivity {
         weichat_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginWeChat();
+//                loginWeChat();
+                ActivityRegisterOne_.intent(LoginActivity.this).start();
             }
         });
 
