@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import nice.com.jzs.camera.ActivityCapture;
 import nice.com.jzs.ui.doctors.ActivityDoctorsGroup_;
 import nice.com.jzs.ui.news.ActivityNewsGroup_;
+import nice.com.jzs.ui.zicha.ActivityZichaOne;
+import nice.com.jzs.ui.zicha.ActivityZichaOne_;
 import nice.com.nice_library.bean.BaseBean;
 import nice.com.nice_library.nice_view.ViewBannerAutoScroll;
 import nice.com.jzs.R;
@@ -61,6 +63,12 @@ public class MainHomeFragmentNew extends AbstractFragment {
     @AfterViews
     void initView() {
         message.setImageResource(R.drawable.icon_message);
+        message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityZichaOne_.intent(getActivity()).start();
+            }
+        });
         xiaoren.setImageResource(R.drawable.icon_xiaoren);
         xiaoren.setOnClickListener(new View.OnClickListener() {
             @Override

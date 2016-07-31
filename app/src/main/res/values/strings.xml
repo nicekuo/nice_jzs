@@ -10,4 +10,13 @@
     <string name="j_pickerview_cancel">取消</string>
     <string name="j_pickerview_submit">确定</string>
     <string name="json_error">服务器数据错误,无法解析</string>
+    <string name="zicha_one">请检查者双腿并拢，挺直膝盖，将身体慢慢向前玩去大约90度，垂悬双臂，如示意图。</string>
+    <string name="zicha_tips">提示仅供参考，不能取代医生的专业建议</string>
+    <string name="zicha_one_ok_tips">站好了，下一步</string>
+    <string name="zicha_two">请您站在检查者背后，在您的视线里她（他）将会如图所示</string>
+    <string name="zicha_three">调整手机，让绿线与双腿缝隙重合</string>
+    <string name="zicha_two_ok_tips">站好了，下一步</string>
+    <string name="zicha_three_ok_tips">知道了，下一步</string>
+    <string name="zicha_four">转动黄色拖柄，使换线与背部轮廓贴合</string>
+    <string name="zicha_five">点击拍照按钮。并同时自动保存到我的【自查记录】里。</string>
 </resources>
