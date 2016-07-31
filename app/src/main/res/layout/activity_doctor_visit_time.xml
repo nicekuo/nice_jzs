@@ -7,49 +7,158 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/common_button_height"
         android:orientation="horizontal"
-        android:paddingRight="@dimen/dipX15"
+        android:layout_marginLeft="@dimen/common_button_height"
+        android:layout_marginRight="@dimen/dipX15"
         >
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-            <TextView
-                android:id="@+id/morning"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/text_666666"
-                android:textSize="15sp"
-                android:text="上午"
-                />
-            <TextView
-                android:id="@+id/afternoon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/text_666666"
-                android:textSize="15sp"
-                android:text="下午"
-                />
-        </LinearLayout>
-
-        <nice.com.nice_library.widget.container.ViewContainer
-            android:id="@+id/container"
+        <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-
-        </nice.com.nice_library.widget.container.ViewContainer>
+            android:layout_height="match_parent"
+            android:textSize="17sp"
+            android:textColor="@color/text_999999"
+            android:gravity="center"
+            android:text="周一"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="17sp"
+            android:textColor="@color/text_999999"
+            android:gravity="center"
+            android:text="周二"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="17sp"
+            android:textColor="@color/text_999999"
+            android:gravity="center"
+            android:text="周三"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="17sp"
+            android:textColor="@color/text_999999"
+            android:gravity="center"
+            android:text="周四"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="17sp"
+            android:textColor="@color/text_999999"
+            android:gravity="center"
+            android:text="周五"
+            />
 
 
 
     </LinearLayout>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dipX20"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/morning"
+                android:layout_width="@dimen/common_button_height"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="上午"
+                android:textColor="@color/text_666666"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/afternoon"
+                android:layout_width="@dimen/common_button_height"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="下午"
+                android:textColor="@color/text_666666"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@color/text_999999"
+            android:padding="1dp"
+            >
+
+            <nice.com.nice_library.widget.container.ViewContainer
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:orientation="vertical">
+
+            </nice.com.nice_library.widget.container.ViewContainer>
+
+        </FrameLayout>
+
+
+        <View
+            android:layout_width="@dimen/dipX15"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white_two"
+        android:layout_margin="@dimen/dipX5"
+        android:padding="@dimen/dipX15"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_999999"
+            android:textSize="15sp"
+            android:text="坐诊提示："
+            />
+        <TextView
+            android:id="@+id/during_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_999999"
+            android:textSize="15sp"
+            android:text="坐诊提示："
+            />
+
+        <TextView
+            android:id="@+id/tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_999999"
+            android:textSize="15sp"
+            android:text="坐诊提示："
+            />
+
+    </LinearLayout>
 
 
 </LinearLayout>
