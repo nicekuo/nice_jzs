@@ -1,0 +1,16 @@
+{
+  "result": 0,
+  "error_info": "",
+  "data":{
+    "token":"JFJDJKKFJSKDFKDFSDUDu344823437824yJHJKJKH",
+    "phone":"18513854789",
+    "avatar":"http://money.gucheng.com/UploadFiles_6503/201508/2015082523214635.jpg",
+    "nick_name":"林心如",
+    "born":"2016年8月1日",
+    "gender":0
+  }
+}
+
+member/login_phone?phone=18513854789&password=md5
+
+密码为明文MD5值
