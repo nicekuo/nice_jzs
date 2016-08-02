@@ -72,7 +72,7 @@ public class MeFragment extends AbstractFragment {
     void init() {
         initUserLayout();
         initModelList();
-        getMineData();
+//        getMineData();
         registerReceiver();
         id_tv_about.setOnClickListener(new View.OnClickListener() {
             @Override

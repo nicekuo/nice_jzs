@@ -15,8 +15,8 @@ import cn.finalteam.loadingviewfinal.OnLoadMoreListener;
  *
  * @description 商家列表主界面
  */
-@EFragment(R.layout.fragment_main_home)
-public class ShopListFragment extends AbstractFragment implements SwipeRefreshLayout.OnRefreshListener, OnLoadMoreListener {
+@EFragment(R.layout.fragment_zicha)
+public class ZichaFragment extends AbstractFragment implements SwipeRefreshLayout.OnRefreshListener, OnLoadMoreListener {
 
 
 

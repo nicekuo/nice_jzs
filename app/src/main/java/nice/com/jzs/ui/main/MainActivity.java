@@ -46,26 +46,31 @@ import java.util.Map;
 @EActivity(R.layout.home_main_layout)
 public class MainActivity extends AbstractActivity {
 
-    public static final int SHOP_CONST = 0;
-    public static final int HOME_CONST = 1;
-    public static final int ME_CONST = 2;
+    public static final int HOME = 0;
+    public static final int ZICHA = 1;
+    public static final int MESSAGE = 2;
+    public static final int ME = 3;
 
     private Fragment preFragment; // 上一个Fragment
     private Fragment[] fragment = new Fragment[4];
 
-    @ViewById(R.id.id_shop)
-    LinearLayout id_shop;
+    @ViewById(R.id.id_zicha)
+    LinearLayout id_zicha;
     @ViewById(R.id.id_home)
     LinearLayout id_home;
     @ViewById(R.id.id_me)
     LinearLayout id_me;
+    @ViewById(R.id.id_message)
+    LinearLayout id_message;
 
-    @ViewById(R.id.id_shop_image)
-    ImageView id_shop_image;
+    @ViewById(R.id.id_zicha_image)
+    ImageView id_zicha_image;
     @ViewById(R.id.id_home_image)
     ImageView id_home_image;
     @ViewById(R.id.id_me_image)
     ImageView id_me_image;
+    @ViewById(R.id.id_message_image)
+    ImageView id_messge_image;
 
     @ViewById(R.id.id_shop_text)
     TextView id_shop_text;
@@ -73,6 +78,8 @@ public class MainActivity extends AbstractActivity {
     TextView id_home_text;
     @ViewById(R.id.id_me_text)
     TextView id_me_text;
+    @ViewById(R.id.id_message_text)
+    TextView id_message_text;
 
     @ViewById(R.id.splashLayout)
     View splashLayout;
@@ -144,7 +151,7 @@ public class MainActivity extends AbstractActivity {
         findViewById(R.id.id_home_fragment).postDelayed(new Runnable() {
             @Override
             public void run() {
-                doShowFragment(HOME_CONST);
+                doShowFragment(HOME);
             }
         },500);
         splashLayout.postDelayed(new Runnable() {
@@ -182,17 +189,20 @@ public class MainActivity extends AbstractActivity {
     /**
      * 底部点击事件
      */
-    @Click({R.id.id_shop, R.id.id_home, R.id.id_me})
+    @Click({R.id.id_zicha, R.id.id_home, R.id.id_me,R.id.id_message})
     void OnTabClickEvent(View view) {
         switch (view.getId()) {
-            case R.id.id_shop:
-                doShowShop();
+            case R.id.id_zicha:
+                doShowZICHA();
                 break;
             case R.id.id_home:
                 doShowHome();
                 break;
             case R.id.id_me:
                 doShowMe();
+                break;
+            case R.id.id_message:
+                doShowMessage();
                 break;
         }
     }
@@ -207,18 +217,23 @@ public class MainActivity extends AbstractActivity {
         Fragment temp = this.fragment[fragmentIndex];
         if (temp == null) {
             switch (fragmentIndex) {
-                case SHOP_CONST:
-                    this.fragment[fragmentIndex] = new ShopListFragment_();
+                case ZICHA:
+                    this.fragment[fragmentIndex] = new ZichaFragment_();
                     transaction.add(R.id.id_home_fragment, this.fragment[fragmentIndex]);
                     temp = this.fragment[fragmentIndex];
                     break;
-                case HOME_CONST:
+                case HOME:
                     this.fragment[fragmentIndex] = new MainHomeFragmentNew_();
                     transaction.add(R.id.id_home_fragment, this.fragment[fragmentIndex]);
                     temp = this.fragment[fragmentIndex];
                     break;
-                case ME_CONST:
+                case ME:
                     this.fragment[fragmentIndex] = new MeFragment_();
+                    transaction.add(R.id.id_home_fragment, this.fragment[fragmentIndex]);
+                    temp = this.fragment[fragmentIndex];
+                    break;
+                case MESSAGE:
+                    this.fragment[fragmentIndex] = new MessageListFragment_();
                     transaction.add(R.id.id_home_fragment, this.fragment[fragmentIndex]);
                     temp = this.fragment[fragmentIndex];
                     break;
@@ -242,11 +257,11 @@ public class MainActivity extends AbstractActivity {
     /**
      * 展示周边的商品列表
      */
-    void doShowShop() {
+    void doShowZICHA() {
         doResetTabIcon();
-        id_shop_image.setBackgroundResource(R.drawable.icon_home_shop_pressed);
+        id_zicha_image.setBackgroundResource(R.drawable.icon_home_shop_pressed);
         id_shop_text.setTextColor(getResources().getColor(R.color.blue));
-        doShowFragment(SHOP_CONST);
+        doShowFragment(ZICHA);
     }
 
     /**
@@ -255,10 +270,12 @@ public class MainActivity extends AbstractActivity {
     void doResetTabIcon() {
         id_home_image.setBackgroundResource(R.drawable.icon_home_unpressed);
         id_me_image.setBackgroundResource(R.drawable.icon_home_me_unpressed);
-        id_shop_image.setBackgroundResource(R.drawable.icon_home_shop_unpressed);
+        id_zicha_image.setBackgroundResource(R.drawable.icon_home_shop_unpressed);
         id_home_text.setTextColor(getResources().getColor(R.color.common_grey));
         id_shop_text.setTextColor(getResources().getColor(R.color.common_grey));
         id_me_text.setTextColor(getResources().getColor(R.color.common_grey));
+        id_messge_image.setBackgroundResource(R.drawable.icon_home_unpressed);
+        id_message_text.setTextColor(getResources().getColor(R.color.common_grey));
     }
 
     /**
@@ -268,21 +285,42 @@ public class MainActivity extends AbstractActivity {
         doResetTabIcon();
         id_home_image.setBackgroundResource(R.drawable.icon_home_pressed);
         id_home_text.setTextColor(getResources().getColor(R.color.blue));
-        doShowFragment(HOME_CONST);
+        doShowFragment(HOME);
+    }
+
+    /**
+     * 展示消息列表
+     */
+    void doShowMessage() {
+
+        doResetTabIcon();
+        id_messge_image.setBackgroundResource(R.drawable.icon_home_pressed);
+        id_message_text.setTextColor(getResources().getColor(R.color.blue));
+        doShowFragment(MESSAGE);
+
+
+//        if (JICHEApplication.getInstance().getLoginState()) {
+//            doResetTabIcon();
+//            id_messge_image.setBackgroundResource(R.drawable.icon_home_me_pressed);
+//            id_message_text.setTextColor(getResources().getColor(R.color.blue));
+//            doShowFragment(MESSAGE);
+//        } else {
+//            JICHEApplication.getInstance().gotoLogin(MainActivity.this);
+//        }
     }
 
     /**
      * 展示用户个人主页
      */
     void doShowMe() {
-        if (JICHEApplication.getInstance().getLoginState()) {
+//        if (JICHEApplication.getInstance().getLoginState()) {
             doResetTabIcon();
             id_me_image.setBackgroundResource(R.drawable.icon_home_me_pressed);
             id_me_text.setTextColor(getResources().getColor(R.color.blue));
-            doShowFragment(ME_CONST);
-        } else {
-            JICHEApplication.getInstance().gotoLogin(MainActivity.this);
-        }
+            doShowFragment(ME);
+//        } else {
+//            JICHEApplication.getInstance().gotoLogin(MainActivity.this);
+//        }
     }
 
 
