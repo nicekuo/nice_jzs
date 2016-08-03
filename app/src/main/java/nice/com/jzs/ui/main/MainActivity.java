@@ -297,9 +297,6 @@ public class MainActivity extends AbstractActivity {
         id_messge_image.setBackgroundResource(R.drawable.icon_home_message_pressed);
         id_message_text.setTextColor(getResources().getColor(R.color.blue));
         doShowFragment(MESSAGE);
-
-
-
 //            doResetTabIcon();
 //            id_messge_image.setBackgroundResource(R.drawable.icon_home_me_pressed);
 //            id_message_text.setTextColor(getResources().getColor(R.color.blue));
