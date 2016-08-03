@@ -259,7 +259,7 @@ public class MainActivity extends AbstractActivity {
      */
     void doShowZICHA() {
         doResetTabIcon();
-        id_zicha_image.setBackgroundResource(R.drawable.icon_home_shop_pressed);
+        id_zicha_image.setBackgroundResource(R.drawable.icon_home_zicha_pressed);
         id_shop_text.setTextColor(getResources().getColor(R.color.blue));
         doShowFragment(ZICHA);
     }
@@ -270,11 +270,11 @@ public class MainActivity extends AbstractActivity {
     void doResetTabIcon() {
         id_home_image.setBackgroundResource(R.drawable.icon_home_unpressed);
         id_me_image.setBackgroundResource(R.drawable.icon_home_me_unpressed);
-        id_zicha_image.setBackgroundResource(R.drawable.icon_home_shop_unpressed);
+        id_zicha_image.setBackgroundResource(R.drawable.icon_home_zicha_unpressed);
         id_home_text.setTextColor(getResources().getColor(R.color.common_grey));
         id_shop_text.setTextColor(getResources().getColor(R.color.common_grey));
         id_me_text.setTextColor(getResources().getColor(R.color.common_grey));
-        id_messge_image.setBackgroundResource(R.drawable.icon_home_unpressed);
+        id_messge_image.setBackgroundResource(R.drawable.icon_home_message_unpressed);
         id_message_text.setTextColor(getResources().getColor(R.color.common_grey));
     }
 
@@ -294,7 +294,7 @@ public class MainActivity extends AbstractActivity {
     void doShowMessage() {
 
         doResetTabIcon();
-        id_messge_image.setBackgroundResource(R.drawable.icon_home_pressed);
+        id_messge_image.setBackgroundResource(R.drawable.icon_home_message_pressed);
         id_message_text.setTextColor(getResources().getColor(R.color.blue));
         doShowFragment(MESSAGE);
 

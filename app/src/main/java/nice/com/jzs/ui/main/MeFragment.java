@@ -72,7 +72,6 @@ public class MeFragment extends AbstractFragment {
     void init() {
         initUserLayout();
         initModelList();
-//        getMineData();
         registerReceiver();
         id_tv_about.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,55 +95,6 @@ public class MeFragment extends AbstractFragment {
     }
 
 
-    void getMineData() {
-        Map<String,String> params = new HashMap<>();
-        ((AbstractActivity) getActivity()).new NiceAsyncTask(false) {
-            @Override
-            public void loadSuccess(BaseBean bean) {
-                MineBean mineBean = (MineBean) bean;
-                if (mineBean.getData() != null && mineBean.getData().getMine_prompts() != null && mineBean.getData().getMine_prompts().size() > 0) {
-                    updateModelList(mineBean);
-                } else {
-                    JICHEApplication.getInstance().showJsonErrorToast();
-                }
-            }
-
-            @Override
-            public void exception() {
-
-            }
-        }.post(true, RequestAPI.API_GET_MINE_ALL, params, MineBean.class);
-    }
-
-
-    void updateModelList(MineBean mineBean) {
-        MineBean.DataBean.MinePromptsBean m1 = mdatas.get(0);
-        if (mineBean.getData().getMine_prompts().size() > 1) {
-            m1.setPrompt(mineBean.getData().getMine_prompts().get(0).getPrompt());
-        }
-
-        MineBean.DataBean.MinePromptsBean m3 = mdatas.get(2);
-        if (mineBean.getData().getMine_prompts().size() > 3) {
-            m3.setPrompt(mineBean.getData().getMine_prompts().get(2).getPrompt());
-        }
-
-        MineBean.DataBean.MinePromptsBean m4 = mdatas.get(3);
-        if (mineBean.getData().getMine_prompts().size() > 4) {
-            m4.setPrompt(mineBean.getData().getMine_prompts().get(3).getPrompt());
-        }
-
-        MineBean.DataBean.MinePromptsBean m5 = mdatas.get(4);
-        if (mineBean.getData().getMine_prompts().size() >= 5) {
-            m5.setPrompt(mineBean.getData().getMine_prompts().get(4).getPrompt());
-        }
-
-//        MineBean.DataBean.MinePromptsBean m6 = mdatas.get(5);
-//        if (mineBean.getData().getMine_prompts().size() == 6) {
-//            m6.setPrompt(mineBean.getData().getMine_prompts().get(5).getPrompt());
-//        }
-        adapter.notifyDataSetChanged();
-    }
-
     private void updateCartTips() {
         MineBean.DataBean.MinePromptsBean m2 = mdatas.get(1);
         adapter.notifyDataSetChanged();
@@ -152,42 +102,49 @@ public class MeFragment extends AbstractFragment {
 
     private void initModelList() {
         MineBean.DataBean.MinePromptsBean m1 = new MineBean.DataBean.MinePromptsBean();
-        m1.setIcon_id(R.drawable.icon_me_my_order);
-        m1.setName(getString(R.string.hint_my_order));
+        m1.setIcon_id(R.drawable.icon_me_record);
+        m1.setName(getString(R.string.hint_my_zicha));
         m1.setClassify("0");
 
         MineBean.DataBean.MinePromptsBean m2 = new MineBean.DataBean.MinePromptsBean();
-        m2.setIcon_id(R.drawable.icon_my_shopping_car);
-        m2.setName(getString(R.string.hint_my_shop_car));
+        m2.setIcon_id(R.drawable.icon_me_collect_tocdor);
+        m2.setName(getString(R.string.hint_my_doctor));
         m2.setPrompt("");
         m2.setClassify("1");
 
         MineBean.DataBean.MinePromptsBean m3 = new MineBean.DataBean.MinePromptsBean();
-        m3.setIcon_id(R.drawable.icon_my_coupon);
-        m3.setName(getString(R.string.hint_my_coupon));
+        m3.setIcon_id(R.drawable.icon_me_collect_news);
+        m3.setName(getString(R.string.hint_my_news));
         m3.setClassify("2");
 
         MineBean.DataBean.MinePromptsBean m4 = new MineBean.DataBean.MinePromptsBean();
-        m4.setIcon_id(R.drawable.icon_my_car);
-        m4.setName(getString(R.string.hint_my_like_car));
+        m4.setIcon_id(R.drawable.icon_me_clear);
+        m4.setName(getString(R.string.hint_my_clear));
         m4.setClassify("3");
 
         MineBean.DataBean.MinePromptsBean m5 = new MineBean.DataBean.MinePromptsBean();
-        m5.setIcon_id(R.drawable.icon_my_collect);
-        m5.setName(getString(R.string.hint_my_collect));
+        m5.setIcon_id(R.drawable.icon_me_update);
+        m5.setName(getString(R.string.hint_my_update));
         m5.setClassify("4");
 
-//        MineBean.DataBean.MinePromptsBean m6 = new MineBean.DataBean.MinePromptsBean();
-//        m6.setIcon_id(R.drawable.icon_my_message);
-//        m6.setName(getString(R.string.hint_my_message));
-//        m6.setClassify("5");
+        MineBean.DataBean.MinePromptsBean m6 = new MineBean.DataBean.MinePromptsBean();
+        m6.setIcon_id(R.drawable.icon_me_suggest);
+        m6.setName(getString(R.string.hint_my_suggest));
+        m6.setClassify("5");
+
+
+        MineBean.DataBean.MinePromptsBean m7 = new MineBean.DataBean.MinePromptsBean();
+        m7.setIcon_id(R.drawable.icon_me_about);
+        m7.setName(getString(R.string.hint_my_about));
+        m7.setClassify("6");
 
         mdatas.add(m1);
         mdatas.add(m2);
         mdatas.add(m3);
         mdatas.add(m4);
         mdatas.add(m5);
-        // mdatas.add(m6);
+        mdatas.add(m6);
+        mdatas.add(m7);
         adapter = new MeSettingAdapter(mdatas, getActivity(), null, null);
         id_list.setAdapter(adapter);
     }
@@ -208,19 +165,19 @@ public class MeFragment extends AbstractFragment {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (ConfigValue.kMeFragmentTips.equals(action)) {
-                getMineData();
+//                getMineData();
             }
 
-            if (ConfigValue.kMeFragmentAvatar.equals(action)){
+            if (ConfigValue.kMeFragmentAvatar.equals(action)) {
                 initUserLayout();
             }
 
             if (ConfigValue.kProductCartCountBroadcast.equals(action)) {
                 updateCartTips();
             }
-            if (ConfigValue.kMeFragmentLogin.equals(action)){
+            if (ConfigValue.kMeFragmentLogin.equals(action)) {
                 initUserLayout();
-                getMineData();
+//                getMineData();
             }
         }
     };
