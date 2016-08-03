@@ -300,9 +300,6 @@ public class MainActivity extends AbstractActivity {
 
 
 
-
-
-//        if (JICHEApplication.getInstance().getLoginState()) {
 //            doResetTabIcon();
 //            id_messge_image.setBackgroundResource(R.drawable.icon_home_me_pressed);
 //            id_message_text.setTextColor(getResources().getColor(R.color.blue));
