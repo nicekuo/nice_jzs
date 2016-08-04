@@ -65,6 +65,14 @@ public class ActivityLogin extends AbstractActivity {
             }
         });
 
+        idBtnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                loginWeChat();
+                ActivityPwdLogin_.intent(ActivityLogin.this).start();
+            }
+        });
+
 
     }
 
