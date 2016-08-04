@@ -8,6 +8,8 @@ import android.text.TextUtils;
 import com.alibaba.fastjson.JSON;
 
 import nice.com.jzs.BuildConfig;
+import nice.com.jzs.ui.setting.ActivityLogin;
+import nice.com.jzs.ui.setting.ActivityLogin_;
 import nice.com.nice_library.CoreApplication;
 import nice.com.nice_library.util.IntentUtil;
 import nice.com.nice_library.util.ToastUtil;
@@ -208,7 +210,7 @@ public class JICHEApplication extends CoreApplication {
     }
 
     public void gotoLogin(AbstractActivity abstractActivity) {
-        LoginActivity_.intent(abstractActivity).start();
+        ActivityLogin_.intent(abstractActivity).start();
     }
 
     public void gotoLoginForResult(AbstractActivity abstractActivity, int requestcode) {
