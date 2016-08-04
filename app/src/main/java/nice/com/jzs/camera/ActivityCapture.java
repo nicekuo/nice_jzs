@@ -31,6 +31,8 @@ import java.util.Date;
 import java.util.List;
 
 import nice.com.jzs.R;
+import nice.com.jzs.background.AppInfo;
+import nice.com.nice_library.util.DisplayUtil;
 
 
 @SuppressLint("NewApi")
@@ -40,12 +42,11 @@ public class ActivityCapture extends Activity implements
     private ImageView bnCapture;
     private TextView save;
     private TextView notSave;
-    private FixHeightRadioImageView showImage;
+    private ImageView showImage;
     private boolean isOpenLight = false;
 
     private FrameLayout framelayoutPreview;
     private CameraPreview preview;
-    private CameraCropBorderView cropBorderView;
     private Camera camera;
     private PictureCallback pictureCallBack;
     private Camera.AutoFocusCallback focusCallback;
@@ -58,6 +59,7 @@ public class ActivityCapture extends Activity implements
 
     private TextView degree;
     private TimeCircleSelector degreeBar;
+    private View line;
 
     CaptureOrientationEventListener _orientationEventListener;
     private int _rotation;
@@ -87,6 +89,8 @@ public class ActivityCapture extends Activity implements
         super.onCreate(savedInstanceState);
         observer = new CaptureSensorsObserver(this);
         _orientationEventListener = new CaptureOrientationEventListener(this);
+        cropWidth = AppInfo.width;
+        cropHeight = AppInfo.height-60;
         setContentView(R.layout.activity_capture);
         getViews();
         initViews();
@@ -98,12 +102,13 @@ public class ActivityCapture extends Activity implements
     protected void getViews() {
         save = (TextView) findViewById(R.id.save);
         notSave = (TextView) findViewById(R.id.notSave);
-        showImage = (FixHeightRadioImageView) findViewById(R.id.showImage);
+        showImage = (ImageView) findViewById(R.id.showImage);
         bnCapture = (ImageView) findViewById(R.id.bnCapture);
         framelayoutPreview = (FrameLayout) findViewById(R.id.cameraPreview);
         focuseView = findViewById(R.id.viewFocuse);
         degree = (TextView) findViewById(R.id.degree);
         degreeBar = (TimeCircleSelector) findViewById(R.id.degreeBar);
+        line = findViewById(R.id.line);
         degreeBar.setAdapter(new TimeCircleSelector.TimeAdapter() {
             @Override
             public int getCount() {
@@ -124,7 +129,7 @@ public class ActivityCapture extends Activity implements
     }
 
     protected void initViews() {
-        showImage.setRadio(cropWidth / (cropHeight * 1.0f));
+
     }
 
     protected void setListeners() {
@@ -277,7 +282,8 @@ public class ActivityCapture extends Activity implements
             bnCapture.setVisibility(View.INVISIBLE);
             save.setVisibility(View.VISIBLE);
             notSave.setVisibility(View.VISIBLE);
-            cropBorderView.setFullBlack();
+            degreeBar.setVisibility(View.INVISIBLE);
+            line.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -287,7 +293,8 @@ public class ActivityCapture extends Activity implements
         bnCapture.setVisibility(View.VISIBLE);
         save.setVisibility(View.INVISIBLE);
         notSave.setVisibility(View.INVISIBLE);
-        cropBorderView.setNotFullBlack();
+        degreeBar.setVisibility(View.VISIBLE);
+        line.setVisibility(View.VISIBLE);
         if (finalBitmap != null && !finalBitmap.isRecycled()) {
             finalBitmap.recycle();
         }
@@ -335,12 +342,8 @@ public class ActivityCapture extends Activity implements
             Log.v(TAG, "w:" + size.width + ",h:" + size.height);
         }
         preview = new CameraPreview(this, camera);
-        cropBorderView = new CameraCropBorderView(this);
-        cropBorderView.setWidthHeight(cropWidth, cropHeight);
         FrameLayout.LayoutParams params1 = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-        FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
         framelayoutPreview.addView(preview, params1);
-        framelayoutPreview.addView(cropBorderView, params2);
         observer.start();
         _orientationEventListener.enable();
     }
@@ -634,6 +637,10 @@ public class ActivityCapture extends Activity implements
             return;
         }
 
+        if (showImage.getVisibility() == View.VISIBLE){
+            return;
+        }
+
         //LogEx.i("autoFocus");
         camera.cancelAutoFocus();
         try {
@@ -678,4 +685,5 @@ public class ActivityCapture extends Activity implements
             }
         }
     }
+
 }

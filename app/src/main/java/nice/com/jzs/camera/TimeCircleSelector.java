@@ -2,6 +2,8 @@ package nice.com.jzs.camera;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -99,6 +101,8 @@ public class TimeCircleSelector extends View {
 
     private OnSelectionChangeListener mSelectionChangeListener;
 
+    private Bitmap yellow_line;
+
 	/* =================get/set方法====================== */
 
     /**
@@ -156,6 +160,7 @@ public class TimeCircleSelector extends View {
     }
 
     private void init() {
+        yellow_line = BitmapFactory.decodeResource(getResources(), R.drawable.icon_yellow_line);
         mCenterPoint = new Point();
         mPaint = new Paint();
         mPaint.setAlpha(80);
@@ -202,7 +207,7 @@ public class TimeCircleSelector extends View {
     private void reset() {
         // 计算相邻两个item之间的弧度距离
         mSingleRadian = (float) ((2 * Math.PI) / mCircleCount);
-        mSelectPosition = mCircleCount/4;
+        mSelectPosition = mCircleCount / 4;
     }
 
     /**
@@ -318,13 +323,14 @@ public class TimeCircleSelector extends View {
             mPaint.setColor(Color.YELLOW);
             mPaint.setStrokeWidth(mCirclePointWidth);
             if (mAdapter != null) {
-                mAdapter.tempDegree((float) (mSingleRadian * mSelectPosition / Math.PI * 180)-90);
+                mAdapter.tempDegree((float) (mSingleRadian * mSelectPosition / Math.PI * 180) - 90);
             }
             x = mCenterPoint.x + (int) (mCircleInnerRadius * Math.sin(mSingleRadian * mSelectPosition));
             y = mCenterPoint.y - (int) (mCircleInnerRadius * Math.cos(mSingleRadian * mSelectPosition));
             startX = mCenterPoint.x - (int) (mCircleInnerRadius * Math.sin(mSingleRadian * mSelectPosition));
             startY = mCenterPoint.y + (int) (mCircleInnerRadius * Math.cos(mSingleRadian * mSelectPosition));
             canvas.drawLine(startX, startY, x, y, mPaint);
+
 //            mPaint.setColor(mCircleCenterColor);
 //            canvas.drawCircle(mCenterPoint.x, mCenterPoint.y,mCircleCenterRadius, mPaint);
             mPaint.setColor(Color.YELLOW);

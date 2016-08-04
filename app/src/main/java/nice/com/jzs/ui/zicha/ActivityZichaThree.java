@@ -31,7 +31,7 @@ public class ActivityZichaThree extends AbstractActivity {
     @AfterViews
     void initView(){
         setTitleName("脊柱自查");
-        text.setVisibility(View.GONE);
+        text.setVisibility(View.INVISIBLE);
         image.setImageResource(R.drawable.img_zicha_3);
         tips.setText(getResources().getString(R.string.zicha_three));
         ok.setText(getResources().getString(R.string.zicha_three_ok_tips));

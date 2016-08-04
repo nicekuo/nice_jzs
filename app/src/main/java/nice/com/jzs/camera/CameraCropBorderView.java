@@ -22,12 +22,12 @@ public class CameraCropBorderView extends View {
 	/**
 	 * 边框的颜色，默认为白色
 	 */
-	private int mBorderColor = Color.parseColor("#FFFFFF");
+	private int mBorderColor = Color.parseColor("#00000000");
 	/**
 	 * 边框以外的颜色
 	 */
-	private int mFillColor = Color.parseColor("#d6000000");
-	private int mFillBlackColor = Color.parseColor("#ff000000");
+	private int mFillColor = Color.parseColor("#00000000");
+	private int mFillBlackColor = Color.parseColor("#00000000");
 	/**
 	 * 边框的宽度 单位dp
 	 */

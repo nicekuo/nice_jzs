@@ -6,11 +6,11 @@
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/img_zicha_1"
+        android:layout_width="300dp"
+        android:layout_height="315dp"
+        android:src="@drawable/img_zicha_2"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/dipX30"
+        android:layout_marginTop="@dimen/dipX10"
         />
 
     <TextView
@@ -20,9 +20,11 @@
         android:background="@color/white_two"
         android:textSize="16sp"
         android:textColor="@color/text_999999"
-        android:layout_margin="@dimen/dipX10"
         android:padding="@dimen/dipX15"
         android:text="@string/zicha_one"
+        android:layout_marginLeft="@dimen/dipX15"
+        android:layout_marginRight="@dimen/dipX15"
+        android:layout_marginTop="@dimen/dipX10"
         />
 
     <TextView
@@ -32,24 +34,25 @@
         android:background="@color/white"
         android:textSize="16sp"
         android:textColor="@color/text_999999"
-        android:layout_margin="@dimen/dipX10"
         android:padding="@dimen/dipX15"
         android:text="@string/zicha_tips"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/dipX15"
+        android:layout_marginRight="@dimen/dipX15"
         />
 
 
     <TextView
         android:id="@+id/ok"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="@dimen/common_button_height"
-        android:background="@color/blue"
-        android:layout_marginLeft="@dimen/dipX25"
-        android:layout_marginRight="@dimen/dipX25"
+        android:background="@drawable/round_corner_blue_bg"
         android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:textSize="16sp"
         android:text="@string/zicha_one_ok_tips"
-        android:layout_marginTop="@dimen/dipX25"
+        android:layout_marginTop="@dimen/dipX15"
         />
 
 
