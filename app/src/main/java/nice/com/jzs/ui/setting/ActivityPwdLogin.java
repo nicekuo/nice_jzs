@@ -12,7 +12,9 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -21,7 +23,10 @@ import nice.com.jzs.R;
 import nice.com.jzs.background.JICHEApplication;
 import nice.com.jzs.background.RequestAPI;
 import nice.com.jzs.core.AbstractActivity;
+import nice.com.jzs.ui.ViewProgress;
 import nice.com.jzs.ui.account.LoginBean;
+import nice.com.jzs.ui.register.ActivityModifyPasswordPhone_;
+import nice.com.jzs.ui.register.ActivityRegisterOne_;
 import nice.com.nice_library.bean.BaseBean;
 import nice.com.nice_library.util.encrypt.MD5Util;
 
@@ -37,16 +42,35 @@ public class ActivityPwdLogin extends AbstractActivity {
     EditText idPwd;
     @ViewById(R.id.id_btn_pwd_login)
     TextView idPwdLogin;
+    @ViewById(R.id.register)
+    TextView register;
+
+    @ViewById(R.id.forget_password)
+    TextView forget_password;
 
     @Click(R.id.id_btn_pwd_login)
     void onClick(View v) {
         login();
-
     }
 
     @AfterViews
     void initView() {
+
+
+
         titleView.mTitle.setText("登录");
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityRegisterOne_.intent(ActivityPwdLogin.this).start();
+            }
+        });
+        forget_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityModifyPasswordPhone_.intent(ActivityPwdLogin.this).start();
+            }
+        });
     }
 
     private void login() {
@@ -54,7 +78,6 @@ public class ActivityPwdLogin extends AbstractActivity {
         params.put("username", idUserName.getText().toString());
         params.put("password", MD5Util.md5(idPwd.getText().toString()));
         new NiceAsyncTask(false) {
-
             @Override
             public void loadSuccess(BaseBean bean) {
                 LoginBean loginBean = (LoginBean) bean;
@@ -68,15 +91,13 @@ public class ActivityPwdLogin extends AbstractActivity {
                 } else {
                     JICHEApplication.getInstance().showJsonErrorToast();
                 }
-
             }
 
             @Override
             public void exception() {
 
-
             }
-        }.post(true, RequestAPI.API_MEMBER_LOGIN_NORMAL, params, LoginBean.class);
+        }.post(true, RequestAPI.API_JZB_LOGIN_PHONE, params, LoginBean.class);
 
     }
 
@@ -84,12 +105,5 @@ public class ActivityPwdLogin extends AbstractActivity {
     @Override
     protected void onClickBack() {
         finish();
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 }

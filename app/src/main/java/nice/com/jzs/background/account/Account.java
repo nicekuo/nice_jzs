@@ -65,16 +65,12 @@ public class Account {
 
     public void saveAccountInfo(LoginBean info) {
         if (info.getData() != null && info.getData().getToken() != null) {
-            member_id = info.getData().getMember_id();
-            mobile = info.getData().getMobile();
-            nickName = info.getData().getNickname();
+            mobile = info.getData().getPhone();
+            nickName = info.getData().getNick_name();
             avatar = info.getData().getAvatar();
             token = info.getData().getToken();
-            userName = info.getData().getUsername();
             born = info.getData().getBorn();
-            gender = info.getData().getSex();
-            realname = info.getData().getRealname();
-            rankname = info.getData().getRank_name();
+            gender = info.getData().getGender();
             if (TextUtils.isEmpty(rankname)) {
                 rankname = "**会员";
             }

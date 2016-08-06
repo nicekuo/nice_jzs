@@ -310,14 +310,14 @@ public class MainActivity extends AbstractActivity {
      * 展示用户个人主页
      */
     void doShowMe() {
-        if (JICHEApplication.getInstance().getLoginState()) {
+//        if (JICHEApplication.getInstance().getLoginState()) {
             doResetTabIcon();
             id_me_image.setBackgroundResource(R.drawable.icon_home_me_pressed);
             id_me_text.setTextColor(getResources().getColor(R.color.blue));
             doShowFragment(ME);
-        } else {
-            JICHEApplication.getInstance().gotoLogin(MainActivity.this);
-        }
+//        } else {
+//            JICHEApplication.getInstance().gotoLogin(MainActivity.this);
+//        }
     }
 
 

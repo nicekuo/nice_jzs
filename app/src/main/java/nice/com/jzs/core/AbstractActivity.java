@@ -633,6 +633,8 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
                 loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "modify_nick_name.json", clazz));
             } else if (RequestAPI.API_JZB_REGISTER_GENDER.contains(url)) {
                 loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "modify_gender.json", clazz));
+            } else if (RequestAPI.API_JZB_LOGIN_PHONE.contains(url)) {
+                loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "login_phone.json", clazz));
             }
         }
 

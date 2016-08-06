@@ -341,6 +341,27 @@
             android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
+        <activity
+            android:name="nice.com.jzs.ui.register.ActivityModifyPasswordPhone_"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/teshu_color_style"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity
+            android:name="nice.com.jzs.ui.register.ActivityModifyPasswordCode_"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/teshu_color_style"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity
+            android:name="nice.com.jzs.ui.register.ActivityModifyPassword_"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/teshu_color_style"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
 
 
         <activity

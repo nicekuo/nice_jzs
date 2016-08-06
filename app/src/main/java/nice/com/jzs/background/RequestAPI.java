@@ -103,6 +103,8 @@ public class RequestAPI {
     public static final String API_JZB_REGISTER_NICKNAME = "develop_register/nickname";
     public static final String API_JZB_REGISTER_GENDER = "develop_register/gender";
     public static final String API_JZB_REGISTER_BORN = "develop_register/born";
+    public static final String API_JZB_LOGIN_PHONE = "develop_login/phone";
+
 
 
 

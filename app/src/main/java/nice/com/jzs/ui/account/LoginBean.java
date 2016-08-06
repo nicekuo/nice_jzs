@@ -1,11 +1,23 @@
 package nice.com.jzs.ui.account;
 
+import org.androidannotations.annotations.res.StringRes;
+
 import nice.com.nice_library.bean.BaseBean;
 
 /**
  * Created by nice on 16/3/23.
  */
 public class LoginBean extends BaseBean {
+
+
+    /**
+     * token : JFJDJKKFJSKDFKDFSDUDu344823437824yJHJKJKH
+     * phone : 18513854789
+     * avatar : http://money.gucheng.com/UploadFiles_6503/201508/2015082523214635.jpg
+     * nick_name : 林心如
+     * born : 2016年8月1日
+     * gender : 0
+     */
 
     private DataBean data;
 
@@ -17,36 +29,13 @@ public class LoginBean extends BaseBean {
         this.data = data;
     }
 
-    public static class DataBean extends BaseBean {
+    public static class DataBean {
         private String token;
-        private String member_id;
-        private String mobile;
-        private String username;
-        private String nickname;
-        private String realname;
+        private String phone;
         private String avatar;
-
-        public String getSex() {
-            return sex;
-        }
-
-        public void setSex(String sex) {
-            this.sex = sex;
-        }
-
-        public String getBorn() {
-            return born;
-        }
-
-        public void setBorn(String born) {
-            this.born = born;
-        }
-
-        private String sex;
+        private String nick_name;
         private String born;
-
-        private int pwd_set;
-        private String rank_name;
+        private String gender;
 
         public String getToken() {
             return token;
@@ -56,44 +45,12 @@ public class LoginBean extends BaseBean {
             this.token = token;
         }
 
-        public String getMember_id() {
-            return member_id;
+        public String getPhone() {
+            return phone;
         }
 
-        public void setMember_id(String member_id) {
-            this.member_id = member_id;
-        }
-
-        public String getMobile() {
-            return mobile;
-        }
-
-        public void setMobile(String mobile) {
-            this.mobile = mobile;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public String getNickname() {
-            return nickname;
-        }
-
-        public void setNickname(String nickname) {
-            this.nickname = nickname;
-        }
-
-        public String getRealname() {
-            return realname;
-        }
-
-        public void setRealname(String realname) {
-            this.realname = realname;
+        public void setPhone(String phone) {
+            this.phone = phone;
         }
 
         public String getAvatar() {
@@ -104,21 +61,28 @@ public class LoginBean extends BaseBean {
             this.avatar = avatar;
         }
 
-        public int getPwd_set() {
-            return pwd_set;
+        public String getNick_name() {
+            return nick_name;
         }
 
-        public void setPwd_set(int pwd_set) {
-            this.pwd_set = pwd_set;
+        public void setNick_name(String nick_name) {
+            this.nick_name = nick_name;
         }
 
-        public String getRank_name() {
-            return rank_name;
+        public String getBorn() {
+            return born;
         }
 
-        public void setRank_name(String rank_name) {
-            this.rank_name = rank_name;
+        public void setBorn(String born) {
+            this.born = born;
         }
 
+        public String getGender() {
+            return gender;
+        }
+
+        public void setGender(String gender) {
+            this.gender = gender;
+        }
     }
 }
