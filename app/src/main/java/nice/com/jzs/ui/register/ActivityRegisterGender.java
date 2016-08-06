@@ -12,11 +12,16 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import nice.com.jzs.R;
+import nice.com.jzs.background.RequestAPI;
 import nice.com.jzs.core.AbstractActivity;
 import nice.com.jzs.ui.ViewProgress;
+import nice.com.nice_library.bean.BaseBean;
+import nice.com.nice_library.util.ToastUtil;
 
 
 /**
@@ -81,7 +86,7 @@ public class ActivityRegisterGender extends AbstractActivity {
         Drawable drawable = null;
         switch (view.getId()) {
             case R.id.id_btn_login://登陆按钮
-                ActivityRegisterBorn_.intent(ActivityRegisterGender.this).start();
+                tryRegisterGender();
                 break;
             case R.id.man:
                 selectMan();
@@ -90,6 +95,27 @@ public class ActivityRegisterGender extends AbstractActivity {
                 selectWoman();
                 break;
         }
+    }
+
+    private void tryRegisterGender() {
+        Map<String,String> map =new HashMap<>();
+        map.put("gender",select_int+"");
+        new NiceAsyncTask(false){
+
+            @Override
+            public void loadSuccess(BaseBean bean) {
+                if (bean.result !=0){
+                    ToastUtil.showToastMessage(ActivityRegisterGender.this,bean.error_info);
+                }else {
+                    ActivityRegisterBorn_.intent(ActivityRegisterGender.this).start();
+                }
+            }
+
+            @Override
+            public void exception() {
+
+            }
+        }.post(RequestAPI.API_JZB_REGISTER_GENDER,map,BaseBean.class);
     }
 
     private void selectMan() {

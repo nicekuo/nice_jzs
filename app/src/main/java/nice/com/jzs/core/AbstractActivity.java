@@ -425,29 +425,16 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
             }
 
 
-
-
-
-
-
-            if (apiUrl.contains("develop")){
+            if (apiUrl.contains("develop")) {
                 doValidIsDebug(apiUrl, clazz);
                 return;
             }
 
 
-
-
-
-
-
-
-
-
 //            if (isPost) {
 //                doRequestPOSTByOkHttpUtils(absoluteUrl, params);
 //            } else {
-                doRequestGETByOkHttpUtils(absoluteUrl, params);
+            doRequestGETByOkHttpUtils(absoluteUrl, params);
 //            }
             NiceLogUtil.request(apiUrl, completeUrl, params);
         }
@@ -489,7 +476,7 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
 
 
         private void doRequestForFile(boolean isLoading, String url, Map<String, String> requestParams,
-                               Class<? extends BaseBean> clazz,String path,String filename) {
+                                      Class<? extends BaseBean> clazz, String path, String filename) {
             if (RequestAPI.isNeedTokenURL(url)) {
                 if (!JICHEApplication.getInstance().getLoginState()) {
                     //需要token的url,并且此时还没有登录,需要弹出登录页面
@@ -525,7 +512,7 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
             if (isLoading) {
                 showLoadDialog(true);
             }
-            doUploadPOSTByOkHttpUtil(path,filename);
+            doUploadPOSTByOkHttpUtil(path, filename);
             NiceLogUtil.request(apiUrl, completeUrl, params);
         }
 
@@ -622,28 +609,35 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
         }
 
 
-        void doValidIsDebug(String url,Class<? extends BaseBean> clazz) {
+        void doValidIsDebug(String url, Class<? extends BaseBean> clazz) {
             dissmissWaitingDialog();
             if (RequestAPI.API_JZB_HOME_INDEX.contains(url)) {
                 loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "home_data.json", clazz));
-            }else if(RequestAPI.API_JZB_NEWS_GROUP.contains(url)){
+            } else if (RequestAPI.API_JZB_NEWS_GROUP.contains(url)) {
                 loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "news_group.json", clazz));
-            }else if (RequestAPI.API_JZB_NEWS_LIST.contains(url)){
+            } else if (RequestAPI.API_JZB_NEWS_LIST.contains(url)) {
                 loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "news_list.json", clazz));
-            }else if (RequestAPI.API_JZB_DOCTORS_GROUP.contains(url)){
+            } else if (RequestAPI.API_JZB_DOCTORS_GROUP.contains(url)) {
                 loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "doctors_group.json", clazz));
-            }else if (RequestAPI.API_JZB_DOCTORS_LIST.contains(url)){
+            } else if (RequestAPI.API_JZB_DOCTORS_LIST.contains(url)) {
                 loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "doctor_list.json", clazz));
-            }else if (RequestAPI.API_JZB_DOCTORS_PAGE.contains(url)){
+            } else if (RequestAPI.API_JZB_DOCTORS_PAGE.contains(url)) {
                 loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "doctor_page.json", clazz));
-            }else if (RequestAPI.API_JZB_DOCTORS_VISIT_TIME.contains(url)){
+            } else if (RequestAPI.API_JZB_DOCTORS_VISIT_TIME.contains(url)) {
                 loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "doctor_visit_time.json", clazz));
+            } else if (RequestAPI.API_JZB_REGISTER_PHONE.contains(url)) {
+                loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "register_phone.json", clazz));
+            } else if (RequestAPI.API_JZB_REGISTER_PASSWORD.contains(url)) {
+                loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "register_password.json", clazz));
+            } else if (RequestAPI.API_JZB_REGISTER_NICKNAME.contains(url)) {
+                loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "modify_nick_name.json", clazz));
+            } else if (RequestAPI.API_JZB_REGISTER_GENDER.contains(url)) {
+                loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "modify_gender.json", clazz));
             }
         }
 
 
     }
-
 
 
     /**
@@ -682,7 +676,7 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
         titleView.setTitleLeftButtonListener(listener);
     }
 
-    protected void setTitleViewBackgroundColor(int color){
+    protected void setTitleViewBackgroundColor(int color) {
         titleView.setBackGroundColor(color);
     }
 
@@ -738,10 +732,9 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
      * 设置右按钮背景和事件
      */
     protected void setTitleRightImageButtonTwo(int imageResId,
-                                            View.OnClickListener listener) {
+                                               View.OnClickListener listener) {
         titleView.setTitleRightImageButtonTwo(imageResId, listener);
     }
-
 
 
     /**

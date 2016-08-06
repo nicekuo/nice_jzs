@@ -8,9 +8,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.Editable;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -28,6 +30,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import nice.com.jzs.R;
 import nice.com.jzs.background.ConfigValue;
@@ -59,6 +63,8 @@ public class ActivityRegisterOne extends AbstractActivity {
 
     @ViewById(R.id.view_progress)
     ViewProgress view_progress;
+
+    private String phone = "";
 
 
     @Override
@@ -94,6 +100,32 @@ public class ActivityRegisterOne extends AbstractActivity {
         images.add(R.drawable.icon_circle_false);
         view_progress.setImages(images);
 
+
+        idEvPhone.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                phone = charSequence.toString();
+                if (charSequence.length() > 0) {
+                    idBtnLogin.setBackgroundResource(R.drawable.round_corner_blue_bg);
+                    idBtnLogin.setEnabled(true);
+                }else {
+                    idBtnLogin.setBackgroundResource(R.drawable.round_corner_grey_bg);
+                    idBtnLogin.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
         titleView.mTitle.setText("注册账号");
         text.setText(getHtmlStr());
         text.setOnClickListener(new View.OnClickListener() {
@@ -116,13 +148,49 @@ public class ActivityRegisterOne extends AbstractActivity {
     }
 
 
+    private void tryRegisterPhone(){
+
+        Map<String,String> params = new HashMap<>();
+        params.put("phone",phone);
+        new NiceAsyncTask(false){
+
+            @Override
+            public void loadSuccess(BaseBean bean) {
+                if (bean.result !=0){
+                    ToastUtil.showToastMessage(ActivityRegisterOne.this,bean.error_info);
+                }else {
+                    ActivityRegisterTwo_.intent(ActivityRegisterOne.this).start();
+                }
+            }
+
+            @Override
+            public void exception() {
+
+            }
+        }.post(true,RequestAPI.API_JZB_REGISTER_PHONE,params,BaseBean.class);
+    }
+
+
     @Click({R.id.id_btn_login})
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.id_btn_login://登陆按钮
-                ActivityRegisterTwo_.intent(ActivityRegisterOne.this).start();
+                if (TextUtils.isEmpty(phone)){
+                    return;
+                }
+                if (isMobileNO(phone)){
+                    tryRegisterPhone();
+                }else {
+                    ToastUtil.showToastMessage(ActivityRegisterOne.this,"输入的手机号不正确");
+                }
                 break;
         }
+    }
+
+    public static boolean isMobileNO(String mobiles) {
+        Pattern p = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
+        Matcher m = p.matcher(mobiles);
+        return m.matches();
     }
 
 

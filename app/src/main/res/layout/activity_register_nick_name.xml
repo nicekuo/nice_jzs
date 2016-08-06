@@ -15,7 +15,7 @@
         />
 
     <EditText
-        android:id="@+id/password_one"
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dipX45"
         android:background="@drawable/round_corner_grey_bg"

@@ -98,6 +98,11 @@ public class RequestAPI {
     public static final String API_JZB_DOCTORS_LIST = "develop_doctor/list";
     public static final String API_JZB_DOCTORS_PAGE = "develop_doctor/page";
     public static final String API_JZB_DOCTORS_VISIT_TIME = "develop_doctor/visit_time";
+    public static final String API_JZB_REGISTER_PHONE = "develop_register/phone";
+    public static final String API_JZB_REGISTER_PASSWORD = "develop_register/password";
+    public static final String API_JZB_REGISTER_NICKNAME = "develop_register/nickname";
+    public static final String API_JZB_REGISTER_GENDER = "develop_register/gender";
+    public static final String API_JZB_REGISTER_BORN = "develop_register/born";
 
 
 

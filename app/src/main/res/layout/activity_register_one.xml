@@ -36,7 +36,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dip"
         android:gravity="center"
-        android:background="@drawable/round_corner_blue_bg"
+        android:background="@drawable/round_corner_grey2_bg"
         android:text="注册"
         android:textColor="@color/white" />
 

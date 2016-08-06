@@ -14,11 +14,16 @@ import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import nice.com.jzs.R;
+import nice.com.jzs.background.RequestAPI;
 import nice.com.jzs.core.AbstractActivity;
 import nice.com.jzs.ui.ViewProgress;
+import nice.com.nice_library.bean.BaseBean;
+import nice.com.nice_library.util.ToastUtil;
 
 
 /**
@@ -42,6 +47,7 @@ public class ActivityRegisterBorn extends AbstractActivity {
     ViewProgress view_progress;
 
     private String dateStr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,9 +103,30 @@ public class ActivityRegisterBorn extends AbstractActivity {
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.id_btn_login://登陆按钮
-
+                tryRegisterBorn();
                 break;
         }
+    }
+
+    private void tryRegisterBorn() {
+        Map<String, String> map = new HashMap<>();
+        map.put("born", dateStr);
+        new NiceAsyncTask(false) {
+
+            @Override
+            public void loadSuccess(BaseBean bean) {
+                if (bean.result != 0) {
+                    ToastUtil.showToastMessage(ActivityRegisterBorn.this, bean.error_info);
+                } else {
+
+                }
+            }
+
+            @Override
+            public void exception() {
+
+            }
+        }.post(RequestAPI.API_JZB_REGISTER_BORN, map, BaseBean.class);
     }
 
 

@@ -2,7 +2,9 @@ package nice.com.jzs.ui.register;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.androidannotations.annotations.AfterViews;
@@ -11,11 +13,17 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import butterknife.BindView;
 import nice.com.jzs.R;
+import nice.com.jzs.background.RequestAPI;
 import nice.com.jzs.core.AbstractActivity;
 import nice.com.jzs.ui.ViewProgress;
+import nice.com.nice_library.bean.BaseBean;
+import nice.com.nice_library.util.ToastUtil;
 
 
 /**
@@ -30,6 +38,9 @@ public class ActivityRegisterNickName extends AbstractActivity {
 
     @ViewById(R.id.view_progress)
     ViewProgress view_progress;
+
+    @ViewById(R.id.name)
+    EditText name;
 
 
     @Override
@@ -73,9 +84,34 @@ public class ActivityRegisterNickName extends AbstractActivity {
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.id_btn_login://登陆按钮
-                ActivityRegisterGender_.intent(ActivityRegisterNickName.this).start();
+                tryRegisterName();
                 break;
         }
+    }
+
+    private void tryRegisterName() {
+        if (TextUtils.isEmpty(name.getText().toString())){
+            ToastUtil.showToastMessage(ActivityRegisterNickName.this,"请输入昵称");
+            return;
+        }
+        Map<String,String> map =new HashMap<>();
+        map.put("nick_name",name.getText().toString());
+        new NiceAsyncTask(false){
+
+            @Override
+            public void loadSuccess(BaseBean bean) {
+                if (bean.result !=0){
+                    ToastUtil.showToastMessage(ActivityRegisterNickName.this,bean.error_info);
+                }else {
+                    ActivityRegisterGender_.intent(ActivityRegisterNickName.this).start();
+                }
+            }
+
+            @Override
+            public void exception() {
+
+            }
+        }.post(RequestAPI.API_JZB_REGISTER_NICKNAME,map,BaseBean.class);
     }
 
 
