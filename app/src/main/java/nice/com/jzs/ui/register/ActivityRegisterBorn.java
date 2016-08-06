@@ -12,10 +12,13 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import nice.com.jzs.R;
 import nice.com.jzs.core.AbstractActivity;
+import nice.com.jzs.ui.ViewProgress;
 
 
 /**
@@ -34,6 +37,9 @@ public class ActivityRegisterBorn extends AbstractActivity {
 
     @ViewById(R.id.date)
     DatePicker datePicker;
+
+    @ViewById(R.id.view_progress)
+    ViewProgress view_progress;
 
     private String dateStr;
     @Override
@@ -59,6 +65,17 @@ public class ActivityRegisterBorn extends AbstractActivity {
 
     @AfterViews
     void initView() {
+
+
+        List<Integer> images = new ArrayList<>();
+        images.add(R.drawable.icon_select_true);
+        images.add(R.drawable.icon_select_true);
+        images.add(R.drawable.icon_select_true);
+        images.add(R.drawable.icon_select_true);
+        images.add(R.drawable.icon_select_true);
+        images.add(R.drawable.icon_circle_true);
+        view_progress.setImages(images);
+
         titleView.mTitle.setText("设置昵称");
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);

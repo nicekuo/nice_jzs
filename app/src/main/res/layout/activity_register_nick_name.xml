@@ -2,34 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_bg_color"
+    android:background="@color/white"
     android:orientation="vertical">
 
 
-    <View
+    <nice.com.jzs.ui.ViewProgress
+        android:id="@+id/view_progress"
         android:layout_width="match_parent"
-        android:layout_height="4dip"
-        android:background="@color/app_bg_color">
-
-    </View>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dipX50"
+        android:layout_marginBottom="@dimen/dipX50"
+        />
 
     <EditText
         android:id="@+id/password_one"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dipX45"
-        android:background="@color/white"
+        android:background="@drawable/round_corner_grey_bg"
         android:hint="请输入昵称"
         android:maxLines="1"
-        android:padding="@dimen/dipX5"
+        android:padding="@dimen/dipX15"
+        android:layout_marginLeft="@dimen/dipX15"
+        android:layout_marginRight="@dimen/dipX15"
         android:textSize="@dimen/txt_size_item_content" />
 
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="4dip"
-        android:background="@color/app_bg_color">
-
-    </View>
 
 
     <TextView
@@ -39,12 +35,10 @@
         android:layout_marginRight="@dimen/dipX15"
         android:layout_height="@dimen/dipX45"
         android:layout_gravity="center"
-        android:layout_marginTop="10dip"
+        android:layout_marginTop="20dip"
         android:gravity="center"
-        android:background="@color/blue"
+        android:background="@drawable/round_corner_blue_bg"
         android:text="下一步"
         android:textColor="@color/white" />
-
-
 
 </LinearLayout>

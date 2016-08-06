@@ -6,42 +6,51 @@
     android:orientation="vertical">
 
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="4dip"
-        android:background="@color/app_bg_color">
 
-    </View>
-
-
-    <RadioGroup
-        android:id="@+id/group"
+    <nice.com.jzs.ui.ViewProgress
+        android:id="@+id/view_progress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="性别"
-        android:layout_marginTop="@dimen/dipX15"
-        android:layout_marginLeft="@dimen/dipX15"
+        android:layout_marginTop="@dimen/dipX50"
+        android:layout_marginBottom="@dimen/dipX50"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
         >
 
-        <RadioButton
-            android:id="@+id/one"
+
+        <TextView
+            android:id="@+id/man"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/text_333333"
+            android:textColor="@color/blue"
+            android:textSize="16sp"
             android:text="男"
+            android:gravity="center"
+            android:drawablePadding="@dimen/dipX10"
+            android:layout_marginRight="40dp"
             />
 
-        <RadioButton
-            android:id="@+id/two"
+        <TextView
+            android:id="@+id/woman"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/text_333333"
+            android:textColor="@color/text_999999"
+            android:textSize="16sp"
             android:text="女"
+            android:gravity="center"
+            android:drawablePadding="@dimen/dipX10"
             />
 
-    </RadioGroup>
 
 
+    </LinearLayout>
 
 
 
@@ -52,9 +61,9 @@
         android:layout_marginRight="@dimen/dipX15"
         android:layout_height="@dimen/dipX45"
         android:layout_gravity="center"
-        android:layout_marginTop="10dip"
+        android:layout_marginTop="20dip"
         android:gravity="center"
-        android:background="@color/blue"
+        android:background="@drawable/round_corner_blue_bg"
         android:text="下一步"
         android:textColor="@color/white" />
 
