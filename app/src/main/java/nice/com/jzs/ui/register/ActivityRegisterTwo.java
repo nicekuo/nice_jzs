@@ -13,12 +13,15 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import nice.com.jzs.R;
 import nice.com.jzs.background.RequestAPI;
 import nice.com.jzs.core.AbstractActivity;
+import nice.com.jzs.ui.ViewProgress;
 import nice.com.nice_library.bean.BaseBean;
 import nice.com.nice_library.util.ToastUtil;
 
@@ -36,6 +39,9 @@ public class ActivityRegisterTwo extends AbstractActivity {
     EditText idEvCode;
     @ViewById(R.id.id_btn_login)
     TextView idBtnLogin;
+
+    @ViewById(R.id.view_progress)
+    ViewProgress view_progress;
 
     private CountDownTimer mCountDownTimer;
 
@@ -67,6 +73,16 @@ public class ActivityRegisterTwo extends AbstractActivity {
 
     @AfterViews
     void initView() {
+
+
+        List<Integer> images = new ArrayList<>();
+        images.add(R.drawable.icon_select_true);
+        images.add(R.drawable.icon_circle_true);
+        images.add(R.drawable.icon_circle_false);
+        images.add(R.drawable.icon_circle_false);
+        images.add(R.drawable.icon_circle_false);
+        images.add(R.drawable.icon_circle_false);
+        view_progress.setImages(images);
 
         titleView.mTitle.setText("手机验证码");
         mCountDownTimer = new CountDownTimer(60 * 1000, 1000) {

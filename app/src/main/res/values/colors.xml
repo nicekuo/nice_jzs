@@ -23,4 +23,7 @@
 
     <color name="common_grey">#929292</color>
 
+
+    <color name="line_progress">#E6EAF3</color>
+
 </resources>

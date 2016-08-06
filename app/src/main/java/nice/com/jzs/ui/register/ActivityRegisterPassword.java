@@ -11,9 +11,13 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import nice.com.jzs.R;
 import nice.com.jzs.background.RequestAPI;
 import nice.com.jzs.core.AbstractActivity;
+import nice.com.jzs.ui.ViewProgress;
 import nice.com.nice_library.util.StringUtil;
 
 
@@ -27,6 +31,8 @@ public class ActivityRegisterPassword extends AbstractActivity {
     @ViewById(R.id.id_btn_login)
     TextView idBtnLogin;
 
+    @ViewById(R.id.view_progress)
+    ViewProgress view_progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,16 @@ public class ActivityRegisterPassword extends AbstractActivity {
 
     @AfterViews
     void initView() {
+
+        List<Integer> images = new ArrayList<>();
+        images.add(R.drawable.icon_select_true);
+        images.add(R.drawable.icon_select_true);
+        images.add(R.drawable.icon_circle_true);
+        images.add(R.drawable.icon_circle_false);
+        images.add(R.drawable.icon_circle_false);
+        images.add(R.drawable.icon_circle_false);
+        view_progress.setImages(images);
+
         titleView.mTitle.setText("设置密码");
     }
 

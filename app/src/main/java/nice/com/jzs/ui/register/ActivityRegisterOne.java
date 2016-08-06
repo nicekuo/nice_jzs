@@ -4,9 +4,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.Html;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
@@ -21,7 +24,9 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import nice.com.jzs.R;
@@ -29,6 +34,7 @@ import nice.com.jzs.background.ConfigValue;
 import nice.com.jzs.background.JICHEApplication;
 import nice.com.jzs.background.RequestAPI;
 import nice.com.jzs.core.AbstractActivity;
+import nice.com.jzs.ui.ViewProgress;
 import nice.com.jzs.ui.account.LoginBean;
 import nice.com.jzs.ui.setting.ActivityPwdLogin_;
 import nice.com.nice_library.bean.BaseBean;
@@ -50,6 +56,9 @@ public class ActivityRegisterOne extends AbstractActivity {
     TextView idBtnLogin;
     @ViewById(R.id.text)
     TextView text;
+
+    @ViewById(R.id.view_progress)
+    ViewProgress view_progress;
 
 
     @Override
@@ -76,8 +85,17 @@ public class ActivityRegisterOne extends AbstractActivity {
     @AfterViews
     void initView() {
 
+        List<Integer> images = new ArrayList<>();
+        images.add(R.drawable.icon_circle_true);
+        images.add(R.drawable.icon_circle_false);
+        images.add(R.drawable.icon_circle_false);
+        images.add(R.drawable.icon_circle_false);
+        images.add(R.drawable.icon_circle_false);
+        images.add(R.drawable.icon_circle_false);
+        view_progress.setImages(images);
+
         titleView.mTitle.setText("注册账号");
-        text.setText(StringUtil.getHtmlStr("我已阅读并接受", "《协议事宜》"));
+        text.setText(getHtmlStr());
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,6 +104,15 @@ public class ActivityRegisterOne extends AbstractActivity {
             }
         });
 
+    }
+
+    public static Spanned getHtmlStr() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("<font color = " + Color.parseColor("#666666") + "> 点击上面的注册按钮即同意 </font>");
+        stringBuffer.append("<font color = " + Color.parseColor("#33c8ca") + "> 服务协议 </font>");
+        stringBuffer.append("<font color = " + Color.parseColor("#666666") + "> 和 </font>");
+        stringBuffer.append("<font color = " + Color.parseColor("#33c8ca") + "> 隐私政策 </font>");
+        return Html.fromHtml(stringBuffer.toString());
     }
 
 
