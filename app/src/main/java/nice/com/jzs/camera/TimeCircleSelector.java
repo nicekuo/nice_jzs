@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
@@ -103,6 +104,8 @@ public class TimeCircleSelector extends View {
 
     private Bitmap yellow_line;
 
+    private Matrix matrix;
+
 	/* =================get/set方法====================== */
 
     /**
@@ -162,6 +165,7 @@ public class TimeCircleSelector extends View {
     private void init() {
         yellow_line = BitmapFactory.decodeResource(getResources(), R.drawable.icon_yellow_line);
         mCenterPoint = new Point();
+        matrix = new Matrix();
         mPaint = new Paint();
         mPaint.setAlpha(80);
         mPaint.setAntiAlias(true);
@@ -319,22 +323,16 @@ public class TimeCircleSelector extends View {
         float y = 0;
         float startX = 0;
         float startY = 0;
+        float degree = (float) (mSingleRadian * mSelectPosition / Math.PI * 180) - 90;
         if (mSelectPosition != INVALID_POSITION) {
             mPaint.setColor(Color.YELLOW);
             mPaint.setStrokeWidth(mCirclePointWidth);
             if (mAdapter != null) {
-                mAdapter.tempDegree((float) (mSingleRadian * mSelectPosition / Math.PI * 180) - 90);
+                mAdapter.tempDegree(degree);
             }
-            x = mCenterPoint.x + (int) (mCircleInnerRadius * Math.sin(mSingleRadian * mSelectPosition));
-            y = mCenterPoint.y - (int) (mCircleInnerRadius * Math.cos(mSingleRadian * mSelectPosition));
-            startX = mCenterPoint.x - (int) (mCircleInnerRadius * Math.sin(mSingleRadian * mSelectPosition));
-            startY = mCenterPoint.y + (int) (mCircleInnerRadius * Math.cos(mSingleRadian * mSelectPosition));
-            canvas.drawLine(startX, startY, x, y, mPaint);
-
-//            mPaint.setColor(mCircleCenterColor);
-//            canvas.drawCircle(mCenterPoint.x, mCenterPoint.y,mCircleCenterRadius, mPaint);
-            mPaint.setColor(Color.YELLOW);
-            canvas.drawCircle(x, y, mCircleTargetRadius, mPaint);
+            matrix.setTranslate(mCenterPoint.x-yellow_line.getWidth()/2,mCenterPoint.y-yellow_line.getHeight()/2);
+            matrix.postRotate(degree,mCenterPoint.x,mCenterPoint.y);
+            canvas.drawBitmap(yellow_line,matrix,mPaint);
 
         }
     }

@@ -61,6 +61,11 @@
         <!--<item name="android:windowBackground">@drawable/splash_bg_new</item>-->
     </style>
 
+    <style name="Theme.Fullscreen" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+        <!--<item name="android:windowBackground">@drawable/splash_bg_new</item>-->
+    </style>
+
 
     <style name="animationActivity" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/anim_slide_right_in</item>

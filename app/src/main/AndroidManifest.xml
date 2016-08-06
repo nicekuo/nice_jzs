@@ -347,6 +347,7 @@
             android:name=".camera.ActivityCapture"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.Fullscreen"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
 

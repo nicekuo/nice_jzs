@@ -25,6 +25,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import org.androidannotations.annotations.App;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -90,7 +92,7 @@ public class ActivityCapture extends Activity implements
         observer = new CaptureSensorsObserver(this);
         _orientationEventListener = new CaptureOrientationEventListener(this);
         cropWidth = AppInfo.width;
-        cropHeight = AppInfo.height-60;
+        cropHeight = AppInfo.height;
         setContentView(R.layout.activity_capture);
         getViews();
         initViews();
@@ -558,10 +560,7 @@ public class ActivityCapture extends Activity implements
                 List<Size> sizes = parameters.getSupportedPreviewSizes();
                 Size optimalSize = getOptimalPreviewSize(sizes, w, h);
                 parameters.setPreviewSize(optimalSize.width, optimalSize.height);
-                double targetRatio = (double) w / h;
-                sizes = parameters.getSupportedPictureSizes();
-                optimalSize = getOptimalPictureSize(sizes, targetRatio);
-                parameters.setPictureSize(optimalSize.width, optimalSize.height);
+                parameters.setPictureSize(AppInfo.height, AppInfo.width);
                 parameters.setRotation(0);
                 mCamera.setParameters(parameters);
             } catch (Exception e) {

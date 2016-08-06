@@ -23,6 +23,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
+        android:layout_marginBottom="50dp"
         android:visibility="invisible" />
 
     <TextView
@@ -41,20 +42,24 @@
         android:layout_width="2dp"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="150dp"
         android:background="@drawable/icon_blue_line"
         />
 
     <nice.com.jzs.camera.TimeCircleSelector
         android:id="@+id/degreeBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="100dp"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:layout_marginTop="@dimen/dipX15"
+        android:layout_marginBottom="@dimen/dipX30"
         android:orientation="horizontal">
 
 
@@ -74,10 +79,10 @@
 
         <ImageView
             android:id="@+id/bnCapture"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_gravity="center"
-            android:src="@drawable/bn_camera_capture_selector" />
+            android:src="@drawable/icon_take_photo" />
 
         <View
             android:layout_width="0dp"
