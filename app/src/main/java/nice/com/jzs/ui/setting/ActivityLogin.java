@@ -2,6 +2,7 @@ package nice.com.jzs.ui.setting;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,12 +21,14 @@ import java.util.Map;
 import butterknife.ButterKnife;
 import nice.com.jzs.R;
 import nice.com.jzs.background.AppInfo;
+import nice.com.jzs.background.ConfigValue;
 import nice.com.jzs.background.JICHEApplication;
 import nice.com.jzs.background.RequestAPI;
 import nice.com.jzs.core.AbstractActivity;
 import nice.com.jzs.ui.account.LoginBean;
 import nice.com.jzs.ui.register.ActivityRegisterOne_;
 import nice.com.nice_library.bean.BaseBean;
+import nice.com.nice_library.util.ToastUtil;
 
 
 /**
@@ -53,6 +56,9 @@ public class ActivityLogin extends AbstractActivity {
     @ViewById(R.id.weichat_login_tips)
     TextView weichatLoginTips;
 
+    private final int kLoginNormalRequstCode = 1043;
+    public static final String kLoginBean = "loginbean";
+
     @AfterViews
     void initView() {
         titleView.mTitle.setText("登录");
@@ -69,7 +75,7 @@ public class ActivityLogin extends AbstractActivity {
             @Override
             public void onClick(View view) {
 //                loginWeChat();
-                ActivityPwdLogin_.intent(ActivityLogin.this).start();
+                ActivityPwdLogin_.intent(ActivityLogin.this).startForResult(kLoginNormalRequstCode);
             }
         });
 
@@ -86,22 +92,36 @@ public class ActivityLogin extends AbstractActivity {
         }
     }
 
-
-    @Click({R.id.id_btn_login, R.id.id_txv_login_type_switch, R.id.id_btn_code})
-    void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.id_btn_login://登陆按钮
-                break;
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == kLoginNormalRequstCode) {
+            if (resultCode == RESULT_OK) {
+                LoginBean loginBean = (LoginBean) data.getSerializableExtra(kLoginBean);
+                doLoginSucess(loginBean);
+            }
         }
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    protected void onClickBack() {
+        finish();
     }
 
-    @Override
-    protected void onClickBack() {
+    private void doLoginSucess(LoginBean loginBean) {
+        JICHEApplication.getInstance().saveAccount(loginBean);
+        ToastUtil.showToastMessage(getApplicationContext(), "登录成功");
+        Intent intent = new Intent(ConfigValue.ACTION_LOGOIN_STATUS_CHANGED);
+        intent.putExtra(ConfigValue.ACTION_DATA_KEY, ConfigValue.ACTION_DATA_VALUE_IN);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+
+        Intent intent1 = new Intent(ConfigValue.kMeFragmentLogin);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent1);
+
+
+        Intent intent2 = new Intent(ConfigValue.kPushTokenUpdate);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent2);
+
+        setResult(RESULT_OK);
         finish();
     }
 
@@ -124,11 +144,4 @@ public class ActivityLogin extends AbstractActivity {
         }.post(true, RequestAPI.API_MEMBER_LOGIN_WECHAT, params, LoginBean.class);
     }
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }

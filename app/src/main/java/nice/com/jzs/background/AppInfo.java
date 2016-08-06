@@ -33,7 +33,7 @@ public class AppInfo {
     public static String mac = null;
     public static String qudao_code = null;
     public final static String via = "1";
-    public static final String APP_NAME = "jiche";
+    public static final String APP_NAME = "jzs";
 
     //客户端版本号
     public static String cver_name = "";

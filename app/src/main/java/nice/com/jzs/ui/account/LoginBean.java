@@ -29,7 +29,7 @@ public class LoginBean extends BaseBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean extends BaseBean {
         private String token;
         private String phone;
         private String avatar;

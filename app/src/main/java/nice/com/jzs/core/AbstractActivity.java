@@ -108,7 +108,7 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
 
     @Override
     public void setContentView(int layoutResID) {
-        if (layoutResID == R.layout.template) {
+        if (layoutResID == R.layout.template||layoutResID == R.layout.activity_capture) {
             super.setContentView(layoutResID);
         } else {
             if (mainBody != null) {
@@ -340,7 +340,7 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
 
         public void updaloadImage(String path, String filename, Class<? extends BaseBean> clazz) {
             Map<String, String> params = new HashMap<>();
-            doRequestForFile(true, RequestAPI.URL_Image_Upload, params, clazz, path, filename);
+            doRequestForFile(true, RequestAPI.API_JZB_UPLOAD_IMG, params, clazz, path, filename);
         }
 
 
@@ -466,7 +466,7 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
                 return;
             }
             OkHttpUtils.post()
-                    .addFile("mFile", name, file)//
+                    .addFile("file", name, file)//
                     .url(absoluteUrl)//
                     .params(params)//
                     .tag(AbstractActivity.this)
@@ -564,7 +564,7 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
 
                         AbstractActivity.this.finish();
 
-                    } else if (bean.result == 1) {
+                    } else if (bean.result == 0) {
                         loadSuccess(bean);
                     } else {
                         ToastUtil.showToastMessage(AbstractActivity.this, bean.error_info);

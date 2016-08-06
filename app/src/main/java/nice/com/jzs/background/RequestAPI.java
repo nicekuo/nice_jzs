@@ -1,5 +1,7 @@
 package nice.com.jzs.background;
 
+import org.androidannotations.annotations.res.StringRes;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +16,7 @@ public class RequestAPI {
 
     public static final String OFFICIAL_BASE_URL = "http://192.130.02.1/";//正式访问地址。
 
-    public static final String DEVELOP_BASE_URL = "http://192.130.02.1/";//测试访问地址。
+    public static final String DEVELOP_BASE_URL = "http://www.meixinger.com/jifeng/api/";//测试访问地址。
 
 
     /*正式url*/
@@ -103,7 +105,8 @@ public class RequestAPI {
     public static final String API_JZB_REGISTER_NICKNAME = "develop_register/nickname";
     public static final String API_JZB_REGISTER_GENDER = "develop_register/gender";
     public static final String API_JZB_REGISTER_BORN = "develop_register/born";
-    public static final String API_JZB_LOGIN_PHONE = "develop_login/phone";
+    public static final String API_JZB_LOGIN_PHONE = "accounts/login.do";
+    public static final String API_JZB_UPLOAD_IMG = "accounts/upload_img.do";
 
 
 

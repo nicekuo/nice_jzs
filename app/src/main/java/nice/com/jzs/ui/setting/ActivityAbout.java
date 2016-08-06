@@ -17,7 +17,7 @@ import org.androidannotations.annotations.ViewById;
 
 
 @EActivity(R.layout.activity_about_jiche)
-public class ActivityAboutJICHe extends AbstractActivity {
+public class ActivityAbout extends AbstractActivity {
 
     @ViewById(R.id.version)
     TextView version;
@@ -40,10 +40,7 @@ public class ActivityAboutJICHe extends AbstractActivity {
     @AfterViews
     void initView() {
         setTitleName("关于我们");
-        version.setText("v" + AppInfo.cver_name);
-
-//        desc2.setText("新人注册送大礼，专业养车，千家门店，到店保养，安全省心");
-        desc2.setVisibility(View.GONE);
+        version.setText("脊诊室   v" + AppInfo.cver_name);
         appinfo.setText(AppInfo.getAppInfoString());
         rootView.setOnClickListener(new View.OnClickListener() {
             @Override

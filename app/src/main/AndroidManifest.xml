@@ -188,7 +188,7 @@
 
 
         <activity
-            android:name="nice.com.jzs.ui.setting.ActivityAboutJICHe_"
+            android:name=".ui.setting.ActivityAbout_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" />
 

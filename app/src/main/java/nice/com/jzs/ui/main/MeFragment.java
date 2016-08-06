@@ -5,23 +5,24 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.AsyncTask;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import nice.com.nice_library.bean.BaseBean;
+import nice.com.jzs.camera.FileUtil;
+import nice.com.jzs.camera.PathManager;
+import nice.com.jzs.ui.setting.ActivityAbout_;
+import nice.com.nice_library.CoreApplication;
 import nice.com.nice_library.util.IntentUtil;
 import nice.com.nice_library.widget.image.SFImageView;
 import nice.com.jzs.R;
 import nice.com.jzs.background.ConfigValue;
 import nice.com.jzs.background.JICHEApplication;
-import nice.com.jzs.background.RequestAPI;
 import nice.com.jzs.background.account.Account;
-import nice.com.jzs.core.AbstractActivity;
 import nice.com.jzs.core.AbstractFragment;
-import nice.com.jzs.ui.setting.ActivityAboutJICHe_;
 import nice.com.jzs.ui.setting.ActivityPersonalCenter_;
 import nice.com.jzs.ui.setting.MeSettingAdapter;
 import nice.com.jzs.ui.setting.MineBean;
@@ -30,10 +31,9 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
+import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by sufun_job on 2016/2/16.
@@ -65,6 +65,8 @@ public class MeFragment extends AbstractFragment {
 
     MeSettingAdapter adapter;
 
+    private String cacheTips;
+
 
     public static final int kSettingRequestCode = 1034;
 
@@ -73,10 +75,11 @@ public class MeFragment extends AbstractFragment {
         initUserLayout();
         initModelList();
         registerReceiver();
+        new CalcuFolderSizeAsy().execute();
         id_tv_about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityAboutJICHe_.intent(getActivity()).start();
+                ActivityAbout_.intent(getActivity()).start();
             }
         });
         userLayout.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +104,8 @@ public class MeFragment extends AbstractFragment {
     }
 
     private void initModelList() {
+        mdatas.clear();
+
         MineBean.DataBean.MinePromptsBean m1 = new MineBean.DataBean.MinePromptsBean();
         m1.setIcon_id(R.drawable.icon_me_record);
         m1.setName(getString(R.string.hint_my_zicha));
@@ -120,6 +125,7 @@ public class MeFragment extends AbstractFragment {
         MineBean.DataBean.MinePromptsBean m4 = new MineBean.DataBean.MinePromptsBean();
         m4.setIcon_id(R.drawable.icon_me_clear);
         m4.setName(getString(R.string.hint_my_clear));
+        m4.setPrompt(cacheTips);
         m4.setClassify("3");
 
         MineBean.DataBean.MinePromptsBean m5 = new MineBean.DataBean.MinePromptsBean();
@@ -147,6 +153,30 @@ public class MeFragment extends AbstractFragment {
         mdatas.add(m7);
         adapter = new MeSettingAdapter(mdatas, getActivity(), null, null);
         id_list.setAdapter(adapter);
+    }
+
+    class CalcuFolderSizeAsy extends AsyncTask<Object, Object, String> {
+        @Override
+        protected String doInBackground(Object... objects) {
+            File cacheDir = new File(CoreApplication.IMAGE_DIR);
+            if (!cacheDir.exists()) {
+                cacheDir.mkdirs();
+            }
+            try {
+                long size = FileUtil.getFolderSize(cacheDir);
+                return size + " M";
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return "";
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            cacheTips = result;
+            initModelList();
+        }
     }
 
     @Override

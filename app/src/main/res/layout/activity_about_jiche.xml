@@ -32,9 +32,11 @@
         android:layout_marginTop="@dimen/dipX10"
         android:paddingLeft="@dimen/dipX25"
         android:paddingRight="@dimen/dipX25"
+        android:text="脊诊室App:脊柱侧弯是指脊柱的一个或数个节段在冠状面上偏离身体中线向侧方弯曲，形成一个带有弧度的脊柱畸形，通常还伴有脊柱的旋"
         android:textColor="@color/text_333333"
         android:lineSpacingMultiplier="1.3"
         android:textSize="@dimen/txt_size_item_middle" />
+
 
     <TextView
         android:id="@+id/desc2"

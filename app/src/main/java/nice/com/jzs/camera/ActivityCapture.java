@@ -34,12 +34,15 @@ import java.util.List;
 
 import nice.com.jzs.R;
 import nice.com.jzs.background.AppInfo;
+import nice.com.jzs.background.RequestAPI;
+import nice.com.jzs.core.AbstractActivity;
+import nice.com.nice_library.bean.BaseBean;
 import nice.com.nice_library.util.DisplayUtil;
 
 
 @SuppressLint("NewApi")
 //默认的相机为横平，所以Activity设置为横屏，拍出的照片才正确
-public class ActivityCapture extends Activity implements
+public class ActivityCapture extends AbstractActivity implements
         View.OnClickListener, CaptureSensorsObserver.RefocuseListener {
     private ImageView bnCapture;
     private TextView save;
@@ -89,6 +92,7 @@ public class ActivityCapture extends Activity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        isTemplate = false;
         observer = new CaptureSensorsObserver(this);
         _orientationEventListener = new CaptureOrientationEventListener(this);
         cropWidth = AppInfo.width;
@@ -98,6 +102,11 @@ public class ActivityCapture extends Activity implements
         initViews();
         setListeners();
         setupDevice();
+    }
+
+    @Override
+    protected void onClickBack() {
+        finish();
     }
 
 
@@ -201,13 +210,13 @@ public class ActivityCapture extends Activity implements
     private static File getOutputMediaFile() {
         // To be safe, you should check that the SDCard is mounted
         // using Environment.getExternalStorageState() before doing this.
-        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "MyCameraApp");
+        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "com.nice.jzs");
         // This location works best if you want the created images to be shared
         // between applications and persist after your app has been uninstalled.
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists()) {
             if (!mediaStorageDir.mkdirs()) {
-                Log.d("MyCameraApp", "failed to create directory");
+                Log.d("com.nice.jzs", "failed to create directory");
                 return null;
             }
         }
@@ -368,14 +377,23 @@ public class ActivityCapture extends Activity implements
     }
 
     private void onClickSave() {
-        if (photoFile == null){
+        if (photoFile == null) {
             return;
         }
 
-        Intent intent = new Intent();
-        intent.putExtra(kPhotoPath, photoFile.getAbsolutePath());
-        ActivityCapture.this.setResult(RESULT_OK, intent);
-        ActivityCapture.this.finish();
+        uploadPhotoPath = photoFile.getPath();
+        new NiceAsyncTask(false) {
+
+            @Override
+            public void loadSuccess(BaseBean bean) {
+
+            }
+
+            @Override
+            public void exception() {
+
+            }
+        }.updaloadImage(uploadPhotoPath, "file", BaseBean.class);
     }
 
     @Override
@@ -636,7 +654,7 @@ public class ActivityCapture extends Activity implements
             return;
         }
 
-        if (showImage.getVisibility() == View.VISIBLE){
+        if (showImage.getVisibility() == View.VISIBLE) {
             return;
         }
 

@@ -57,7 +57,8 @@ public class ActivityPwdLogin extends AbstractActivity {
     void initView() {
 
 
-
+        idUserName.setText("18533675226");
+        idPwd.setText("123456");
         titleView.mTitle.setText("登录");
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,8 +76,9 @@ public class ActivityPwdLogin extends AbstractActivity {
 
     private void login() {
         Map<String, String> params = new HashMap<>();
-        params.put("username", idUserName.getText().toString());
-        params.put("password", MD5Util.md5(idPwd.getText().toString()));
+        params.put("phoneNum", idUserName.getText().toString());
+//        params.put("password", MD5Util.md5(idPwd.getText().toString()));
+        params.put("password", (idPwd.getText().toString()));
         new NiceAsyncTask(false) {
             @Override
             public void loadSuccess(BaseBean bean) {
@@ -84,7 +86,7 @@ public class ActivityPwdLogin extends AbstractActivity {
                 if (loginBean != null && loginBean.getData() != null && !TextUtils.isEmpty(loginBean.getData().getToken())) {
                     Intent intent = new Intent();
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable(LoginActivity.kLoginBean, loginBean);
+                    bundle.putSerializable(ActivityLogin.kLoginBean, loginBean);
                     intent.putExtras(bundle);
                     setResult(RESULT_OK, intent);
                     finish();

@@ -33,7 +33,7 @@ public class ViewSettingItem extends LinearLayout {
         initView(context);
     }
 
-    private void initView(Context context) {
+    private void initView(final Context context) {
         final AbstractActivity activity = (AbstractActivity) context;
         LayoutInflater inflater = LayoutInflater.from(context);
         inflater.inflate(R.layout.setting_me_item, this, true);
@@ -48,7 +48,7 @@ public class ViewSettingItem extends LinearLayout {
                 if (settingModel == null || TextUtils.isEmpty(settingModel.getClassify())) {
                     return;
                 }
-//                switch (settingModel.getClassify()) {
+                switch (settingModel.getClassify()) {
 //                    case "0"://我的订单
 //                        IntentUtil.intentForward(activity, ActivityOrderList_.intent(activity).get());
 //                        break;
@@ -67,7 +67,10 @@ public class ViewSettingItem extends LinearLayout {
 //                    case "5"://我的消息
 //                        IntentUtil.intentForward(activity, MyMessageActivity_.intent(activity).get());
 //                        break;
-//                }
+                    case "6"://我的消息
+                        ActivityAbout_.intent(context).start();
+                        break;
+                }
             }
         });
     }
