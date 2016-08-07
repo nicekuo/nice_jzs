@@ -48,7 +48,8 @@ public class MeFragment extends AbstractFragment {
     @ViewById(R.id.id_list)
     ListView id_list;
     @ViewById(R.id.id_imgbtn_person)
-    ImageButton idImgBtnPerson;
+    TextView idImgBtnPerson;
+
     @ViewById(R.id.userLayout)
     View userLayout;
 
