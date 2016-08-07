@@ -38,11 +38,11 @@ public class ViewZichaListItem extends LinearLayout {
         degree = (TextView) findViewById(R.id.degree);
     }
 
-    public void setData(ZichaListBean.DataBean.ZichaItemBean itemBean){
+    public void setData(ZichaListBean.DataBean itemBean){
         if (itemBean == null){
             return;
         }
-        img.SFSetImageUrl(itemBean.getImg());
+//        img.SFSetImageUrl(itemBean.getImg());
         time.setText(itemBean.getTime());
         degree.setText(itemBean.getDegree());
     }

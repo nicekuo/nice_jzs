@@ -5,19 +5,105 @@
     android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/url"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/common_button_height"
-        android:gravity="center"
-        />
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dipX15"
+        android:background="@color/white_two"
+        android:orientation="vertical"
+        android:padding="@dimen/dipX10">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal"
+            android:paddingLeft="30dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Cobb角约为"
+                    android:textColor="@color/text_666666"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/diagnosed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="比较轻微的脊椎侧弯"
+                    android:textColor="@color/text_666666"
+                    android:textSize="18sp" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/degree"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dipX10"
+                android:layout_weight="2"
+                android:text="18°"
+                android:textColor="@color/red"
+                android:textSize="40sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:drawableLeft="@drawable/icon_me_about"
+            android:drawablePadding="5dp"
+            android:lineSpacingMultiplier="1.2"
+            android:text="Cobb角是用来测试脊柱侧弯弯度的指标，cobb角越大，说明越严重。超过20度需要用支具矫正治疗，超过40度则需要用手术治疗。"
+            android:textColor="@color/text_666666"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+
+
 
     <TextView
-        android:id="@+id/degree"
+        android:text="联系医生详细咨询:"
         android:layout_width="match_parent"
         android:layout_height="@dimen/common_button_height"
-        android:gravity="center"
+        android:paddingLeft="@dimen/dipX15"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/dipX30"
+        android:textSize="16sp"
+        android:textColor="@color/text_666666"
         />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line_color"
+        android:layout_marginBottom="@dimen/dipX10"
+        />
+    <LinearLayout
+        android:id="@+id/content_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+
+    </LinearLayout>
 
 
 </LinearLayout>

@@ -24,5 +24,6 @@
         android:layout_marginRight="@dimen/dipX15"
         android:text="关于"
         android:textColor="@color/text_white"
+        android:visibility="gone"
         android:textSize="16sp"/>
 </RelativeLayout>

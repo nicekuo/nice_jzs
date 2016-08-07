@@ -64,8 +64,8 @@ public class ZichaFragment extends AbstractFragment {
             @Override
             public void loadSuccess(BaseBean bean) {
                 ZichaListBean listBean = (ZichaListBean) bean;
-                if (listBean.getData() != null && listBean.getData().getZicha_list() != null) {
-                    adapter = new ZichaListAdapter(listBean.getData().getZicha_list(), getActivity(), null, null);
+                if (listBean.getData() != null && listBean.getData() != null) {
+                    adapter = new ZichaListAdapter(listBean.getData(), getActivity(), null, null);
                     listView.setAdapter(adapter);
                 }
             }
@@ -86,7 +86,7 @@ public class ZichaFragment extends AbstractFragment {
     }
 
 
-    private class ZichaListAdapter extends SFBaseAdapter<ZichaListBean.DataBean.ZichaItemBean> {
+    private class ZichaListAdapter extends SFBaseAdapter<ZichaListBean.DataBean> {
 
         /**
          * @param data    用于展示的列表数据
@@ -94,7 +94,7 @@ public class ZichaFragment extends AbstractFragment {
          * @param object  引用者
          * @param exObj   此字段用于后期的一些扩展字段，一般没有效果
          */
-        public ZichaListAdapter(List<ZichaListBean.DataBean.ZichaItemBean> data, Context context, Object object, Object exObj) {
+        public ZichaListAdapter(List<ZichaListBean.DataBean> data, Context context, Object object, Object exObj) {
             super(data, context, object, exObj);
         }
 
@@ -106,7 +106,7 @@ public class ZichaFragment extends AbstractFragment {
             } else {
                 listItem = (ViewZichaListItem) convertView;
             }
-            listItem.setData((ZichaListBean.DataBean.ZichaItemBean) getItem(position));
+            listItem.setData((ZichaListBean.DataBean) getItem(position));
             return listItem;
         }
     }

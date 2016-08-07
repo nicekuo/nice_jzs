@@ -108,11 +108,8 @@ public class RequestAPI {
     public static final String API_JZB_LOGIN_PHONE = "accounts/login.do";
     public static final String API_JZB_UPLOAD_IMG = "accounts/upload_img.do";
     public static final String API_JZB_UPLOAD_IMG_NEW = "accounts/setImage.do";
-    public static final String API_JZB_ZICHA_LIST = "develop_zicha/list";
-
-
-
-
+    public static final String API_JZB_ZICHA_LIST = "accounts/zicha_list.do";
+    public static final String API_JZB_ADD_ZICHA = "accounts/add_zicha_record.do";
 
 
 

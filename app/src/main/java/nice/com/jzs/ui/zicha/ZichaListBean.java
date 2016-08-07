@@ -10,71 +10,59 @@ import nice.com.nice_library.bean.BaseBean;
 public class ZichaListBean extends BaseBean {
 
 
-    private DataBean data;
+    /**
+     * degree : 18
+     * img : 111
+     * zicha_id : 23
+     */
 
-    public DataBean getData() {
+    private List<DataBean> data;
+
+    public List<DataBean> getData() {
         return data;
     }
 
-    public void setData(DataBean data) {
+    public void setData(List<DataBean> data) {
         this.data = data;
     }
 
-    public static class DataBean {
-        /**
-         * img : http://static.i3.xywy.com/cms/20141015/1eb0f5cb008bc21b439653566323f9f517388.jpg
-         * time : 2016-8-7 15:47:25
-         * degree : 约19°
-         * zicha_id : 2342
-         */
+    public static class DataBean extends BaseBean {
+        private String degree;
+        private String img;
+        private String zicha_id;
 
-        private List<ZichaItemBean> zicha_list;
-
-        public List<ZichaItemBean> getZicha_list() {
-            return zicha_list;
+        public String getTime() {
+            return time;
         }
 
-        public void setZicha_list(List<ZichaItemBean> zicha_list) {
-            this.zicha_list = zicha_list;
+        public void setTime(String time) {
+            this.time = time;
         }
 
-        public static class ZichaItemBean extends BaseBean {
-            private String img;
-            private String time;
-            private String degree;
-            private String zicha_id;
+        private String time;
 
-            public String getImg() {
-                return img;
-            }
+        public String getDegree() {
+            return degree;
+        }
 
-            public void setImg(String img) {
-                this.img = img;
-            }
+        public void setDegree(String degree) {
+            this.degree = degree;
+        }
 
-            public String getTime() {
-                return time;
-            }
+        public String getImg() {
+            return img;
+        }
 
-            public void setTime(String time) {
-                this.time = time;
-            }
+        public void setImg(String img) {
+            this.img = img;
+        }
 
-            public String getDegree() {
-                return degree;
-            }
+        public String getZicha_id() {
+            return zicha_id;
+        }
 
-            public void setDegree(String degree) {
-                this.degree = degree;
-            }
-
-            public String getZicha_id() {
-                return zicha_id;
-            }
-
-            public void setZicha_id(String zicha_id) {
-                this.zicha_id = zicha_id;
-            }
+        public void setZicha_id(String zicha_id) {
+            this.zicha_id = zicha_id;
         }
     }
 }

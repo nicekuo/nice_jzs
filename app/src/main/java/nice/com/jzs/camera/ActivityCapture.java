@@ -70,7 +70,7 @@ public class ActivityCapture extends AbstractActivity implements
     private TextView degree;
     private TimeCircleSelector degreeBar;
     private View line;
-    private float degreeValue;
+    private int degreeValue;
 
     CaptureOrientationEventListener _orientationEventListener;
     private int _rotation;
@@ -139,7 +139,7 @@ public class ActivityCapture extends AbstractActivity implements
 
             @Override
             public void tempDegree(float degree) {
-                degreeValue = degree;
+                degreeValue = (int) degree;
                 ActivityCapture.this.degree.setText("当前角度：" + degree);
             }
         });
