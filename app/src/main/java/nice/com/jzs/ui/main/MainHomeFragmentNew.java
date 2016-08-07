@@ -66,15 +66,15 @@ public class MainHomeFragmentNew extends AbstractFragment {
         message.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityZichaOne_.intent(getActivity()).start();
+//                ActivityZichaOne_.intent(getActivity()).start();
             }
         });
         xiaoren.setImageResource(R.drawable.icon_xiaoren);
         xiaoren.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),ActivityCapture.class);
-                getActivity().startActivity(intent);
+//                Intent intent = new Intent(getActivity(),ActivityCapture.class);
+//                getActivity().startActivity(intent);
             }
         });
         errorView.register(new ErrorViewForReload.OnClickForReloadListener() {

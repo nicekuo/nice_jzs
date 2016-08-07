@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class RequestAPI {
 
-    public static final String OFFICIAL_BASE_URL = "http://192.130.02.1/";//正式访问地址。
+    public static final String OFFICIAL_BASE_URL = "http://www.meixinger.com/jifeng/api/";//正式访问地址。
 
     public static final String DEVELOP_BASE_URL = "http://www.meixinger.com/jifeng/api/";//测试访问地址。
 

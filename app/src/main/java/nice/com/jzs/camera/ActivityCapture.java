@@ -197,10 +197,10 @@ public class ActivityCapture extends AbstractActivity implements
                     return;
                 }
                 save.setVisibility(View.VISIBLE);
-                boolean successful = BitmapUtil.saveBitmap2file(finalBitmap, photoFile, Bitmap.CompressFormat.JPEG, 100);
+                boolean successful = BitmapUtil.saveBitmap2file(finalBitmap, photoFile, Bitmap.CompressFormat.JPEG, 50);
 
                 while (!successful) {
-                    successful = BitmapUtil.saveBitmap2file(finalBitmap, photoFile, Bitmap.CompressFormat.JPEG, 100);
+                    successful = BitmapUtil.saveBitmap2file(finalBitmap, photoFile, Bitmap.CompressFormat.JPEG, 50);
                 }
                 displayCropImage();
             }
