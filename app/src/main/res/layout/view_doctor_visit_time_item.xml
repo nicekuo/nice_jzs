@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <CheckBox
+    <ImageView
         android:id="@+id/select"
-        android:layout_width="@dimen/dipX40"
-        android:layout_height="@dimen/dipX40"
-        android:checked="true"
+        android:layout_width="@dimen/dipX20"
+        android:layout_height="@dimen/dipX20"
+        android:src="@drawable/icon_select_true"
         android:layout_gravity="center"
         />
 

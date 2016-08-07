@@ -13,6 +13,7 @@ import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.Size;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.OrientationEventListener;
 import android.view.Surface;
@@ -36,8 +37,12 @@ import nice.com.jzs.R;
 import nice.com.jzs.background.AppInfo;
 import nice.com.jzs.background.RequestAPI;
 import nice.com.jzs.core.AbstractActivity;
+import nice.com.jzs.ui.UploadImgBean;
+import nice.com.jzs.ui.zicha.ActivityZichaResult;
+import nice.com.jzs.ui.zicha.ActivityZichaResult_;
 import nice.com.nice_library.bean.BaseBean;
 import nice.com.nice_library.util.DisplayUtil;
+import nice.com.nice_library.util.ToastUtil;
 
 
 @SuppressLint("NewApi")
@@ -65,6 +70,7 @@ public class ActivityCapture extends AbstractActivity implements
     private TextView degree;
     private TimeCircleSelector degreeBar;
     private View line;
+    private float degreeValue;
 
     CaptureOrientationEventListener _orientationEventListener;
     private int _rotation;
@@ -133,6 +139,7 @@ public class ActivityCapture extends AbstractActivity implements
 
             @Override
             public void tempDegree(float degree) {
+                degreeValue = degree;
                 ActivityCapture.this.degree.setText("当前角度：" + degree);
             }
         });
@@ -386,14 +393,20 @@ public class ActivityCapture extends AbstractActivity implements
 
             @Override
             public void loadSuccess(BaseBean bean) {
-
+                UploadImgBean imgBean = (UploadImgBean) bean;
+                if (imgBean.getData() != null && !TextUtils.isEmpty(imgBean.getData().getUrl())) {
+                    ActivityZichaResult_.intent(ActivityCapture.this).degree(String.valueOf(degreeValue)).url(imgBean.getData().getUrl()).start();
+                    finish();
+                } else {
+                    ToastUtil.showToastMessage(ActivityCapture.this, "上传图片失败");
+                }
             }
 
             @Override
             public void exception() {
 
             }
-        }.updaloadImage(uploadPhotoPath, "file", BaseBean.class);
+        }.updaloadImage(uploadPhotoPath, "file", UploadImgBean.class);
     }
 
     @Override

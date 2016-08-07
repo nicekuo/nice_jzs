@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 
 import nice.com.jzs.R;
 import nice.com.nice_library.widget.container.ViewContainerItem;
@@ -15,7 +16,7 @@ import nice.com.nice_library.widget.container.ViewContainerItem;
 public class ViewDoctorVisitTimeItem extends ViewContainerItem {
 
     private View container;
-    private CheckBox select;
+    private ImageView select;
 
     public ViewDoctorVisitTimeItem(Context context) {
         super(context);
@@ -32,7 +33,7 @@ public class ViewDoctorVisitTimeItem extends ViewContainerItem {
         LayoutInflater inflater = LayoutInflater.from(context);
         inflater.inflate(R.layout.view_doctor_visit_time_item,this,true);
         container = findViewById(R.id.container);
-        select = (CheckBox) findViewById(R.id.select);
+        select = (ImageView) findViewById(R.id.select);
     }
 
     public void setData(int color,int isSelect){

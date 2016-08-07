@@ -8,14 +8,13 @@
     <include layout="@layout/home_home_title" />
 
 
-    <TextView
+    <ListView
+        android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textColor="@color/red"
-        android:textSize="18sp"
-        android:text="自查"
-        />
+        android:layout_height="match_parent">
+
+
+    </ListView>
 
 
 

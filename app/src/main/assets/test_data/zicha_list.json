@@ -1,0 +1,19 @@
+{
+  "result": 0,
+  "error_info": "",
+  "data":{
+    "zicha_list":[
+      {
+        "img": "http://static.i3.xywy.com/cms/20141015/1eb0f5cb008bc21b439653566323f9f517388.jpg",
+        "time": "2016-8-7 15:47:25",
+        "degree": "约19°",
+        "zicha_id":"2342"
+      },{
+        "img": "http://static.i3.xywy.com/cms/20141015/1eb0f5cb008bc21b439653566323f9f517388.jpg",
+        "time": "2016-8-7 15:47:25",
+        "degree": "约29°",
+        "zicha_id":"2343"
+      }
+    ]
+  }
+}

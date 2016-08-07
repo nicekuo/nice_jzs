@@ -6,21 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
-
-import nice.com.jzs.BuildConfig;
-import nice.com.jzs.ui.setting.ActivityLogin;
-import nice.com.jzs.ui.setting.ActivityLogin_;
-import nice.com.nice_library.CoreApplication;
-import nice.com.nice_library.util.IntentUtil;
-import nice.com.nice_library.util.ToastUtil;
-import nice.com.nice_library.util.constants.CoreConstant;
-import nice.com.jzs.R;
-import nice.com.jzs.background.account.Account;
-import nice.com.jzs.background.db.DBHelper;
-import nice.com.jzs.core.AbstractActivity;
-import nice.com.jzs.ui.account.LoginBean;
-import nice.com.jzs.ui.main.MainActivity_;
-import nice.com.jzs.ui.setting.LoginActivity_;
 import com.tencent.mm.sdk.constants.Build;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tendcloud.tenddata.TCAgent;
@@ -31,6 +16,18 @@ import org.json.JSONObject;
 
 import java.util.concurrent.TimeUnit;
 
+import nice.com.jzs.R;
+import nice.com.jzs.background.account.Account;
+import nice.com.jzs.background.db.DBHelper;
+import nice.com.jzs.core.AbstractActivity;
+import nice.com.jzs.ui.account.LoginBean;
+import nice.com.jzs.ui.main.MainActivity_;
+import nice.com.jzs.ui.setting.ActivityLogin_;
+import nice.com.jzs.ui.setting.LoginActivity_;
+import nice.com.nice_library.CoreApplication;
+import nice.com.nice_library.util.IntentUtil;
+import nice.com.nice_library.util.ToastUtil;
+import nice.com.nice_library.util.constants.CoreConstant;
 import okhttp3.OkHttpClient;
 
 /**

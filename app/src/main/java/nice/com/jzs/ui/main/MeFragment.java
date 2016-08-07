@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -57,9 +58,6 @@ public class MeFragment extends AbstractFragment {
     @ViewById(R.id.id_tv_nick_name)
     TextView id_tv_nick_name;
 
-    @ViewById(R.id.id_tv_vip)
-    TextView id_tv_vip;
-
     @ViewById(R.id.id_tv_about)
     TextView id_tv_about;
 
@@ -92,9 +90,12 @@ public class MeFragment extends AbstractFragment {
 
     private void initUserLayout() {
         Account account = JICHEApplication.getInstance().getAccount();
-        id_img_user_img.SFSetImageUrl(account.avatar);
+        if (TextUtils.isEmpty(account.avatar)){
+            id_img_user_img.SFSetImageUrl("http://money.gucheng.com/UploadFiles_6503/201508/2015082523214635.jpg");
+        }else {
+            id_img_user_img.SFSetImageUrl(account.avatar);
+        }
         id_tv_nick_name.setText(account.nickName);
-        id_tv_vip.setText(account.rankname);
     }
 
 

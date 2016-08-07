@@ -108,7 +108,7 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
 
     @Override
     public void setContentView(int layoutResID) {
-        if (layoutResID == R.layout.template||layoutResID == R.layout.activity_capture) {
+        if (layoutResID == R.layout.template || layoutResID == R.layout.activity_capture) {
             super.setContentView(layoutResID);
         } else {
             if (mainBody != null) {
@@ -434,7 +434,7 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
 //            if (isPost) {
 //                doRequestPOSTByOkHttpUtils(absoluteUrl, params);
 //            } else {
-            doRequestGETByOkHttpUtils(absoluteUrl, params);
+                doRequestGETByOkHttpUtils(absoluteUrl, params);
 //            }
             NiceLogUtil.request(apiUrl, completeUrl, params);
         }
@@ -466,9 +466,8 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
                 return;
             }
             OkHttpUtils.post()
-                    .addFile("file", name, file)//
+                    .addFile("file", "file", file)//
                     .url(absoluteUrl)//
-                    .params(params)//
                     .tag(AbstractActivity.this)
                     .build()//
                     .execute(new NiceOkHttpCallBack());
@@ -635,6 +634,8 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
                 loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "modify_gender.json", clazz));
             } else if (RequestAPI.API_JZB_LOGIN_PHONE.contains(url)) {
                 loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "login_phone.json", clazz));
+            }else if (RequestAPI.API_JZB_ZICHA_LIST.contains(url)) {
+                loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "zicha_list.json", clazz));
             }
         }
 

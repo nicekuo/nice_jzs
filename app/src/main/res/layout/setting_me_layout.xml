@@ -14,46 +14,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:gravity="center_horizontal"
         android:padding="@dimen/dipX5">
 
 
 
         <FrameLayout
             android:id="@+id/id_img_user_img_view"
-            android:layout_width="130dp"
+            android:layout_width="@dimen/item_img_size"
             android:layout_height="@dimen/item_img_size"
             android:layout_marginBottom="@dimen/dipX10"
             android:layout_marginTop="@dimen/dipX5"
-            android:layout_centerHorizontal="true"
             >
 
             <nice.com.nice_library.widget.image.SFImageView
                 android:id="@+id/id_img_user_img"
                 android:layout_width="@dimen/item_img_size"
                 android:layout_height="@dimen/item_img_size"
-                android:layout_gravity="center"
+                android:layout_gravity="center_horizontal"
                 />
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/circlr_up"
-                android:layout_gravity="center"
                 />
-
-            <TextView
-                android:id="@+id/id_tv_vip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/yellow_bg"
-                android:layout_marginRight="@dimen/dipX5"
-                android:layout_gravity="right"
-                android:padding="2dp"
-                android:text="Vip2"
-                android:textColor="@android:color/white"
-                android:textStyle="italic"
-                android:textSize="9sp" />
-
         </FrameLayout>
 
 
