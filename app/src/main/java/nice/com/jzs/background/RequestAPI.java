@@ -84,12 +84,6 @@ public class RequestAPI {
     public static final String API_MEMBER_LOGIN_WECHAT = "weChat/loginWeChat";
 
 
-
-
-
-
-
-
     /*
     * 临时开发使用的url
     * */
@@ -107,16 +101,12 @@ public class RequestAPI {
     public static final String API_JZB_REGISTER_BORN = "develop_register/born";
     public static final String API_JZB_LOGIN_PHONE = "accounts/login.do";
     public static final String API_JZB_UPLOAD_IMG = "accounts/upload_img.do";
-    public static final String API_JZB_UPLOAD_IMG_NEW = "accounts/setImage.do";
     public static final String API_JZB_ZICHA_LIST = "accounts/zicha_list.do";
     public static final String API_JZB_ADD_ZICHA = "accounts/add_zicha_record.do";
+    public static final String API_JZB_ZICHA_DETAIL = "accounts/zicha_detail.do";
 
 
-
-    private static List<String> needTokenURLList = Arrays.asList(API_MEMBER_CHANGE_CAR, API_ADD_CAR_TO_MY_LIST, API_DELETE_MY_CAR, API_MY_CAR_LIST,
-            API_ORDER_DETAIL_BY_ID, API_COUPON_GET_COUPON, API_ORDER_INFO, API_ADD_GOODS_COMMENT, API_GET_FAVORIATE_SHOPS, API_CHANGE_PASSWORD,
-            API_DELETE_FAVORITE_SHOPS, API_ADD_FAVORITE_SHOPS, API_GET_MINE_ALL, API_CHECK_ORDER, API_GET_SHOP_SERVICES, API_ORDER_CREATE, API_ORDE_PAY,
-            API_EXCHANGE_SERVICE_GOOD, API_ADD_SHOP_COMMENT, API_ORDER_CANCLE, URL_Image_Upload, API_MODIFY_AVATAR,API_MODIFY_INFO,API_MEMBER_LOGIN_OUT
+    private static List<String> needTokenURLList = Arrays.asList(API_JZB_UPLOAD_IMG, API_JZB_ZICHA_LIST, API_JZB_ADD_ZICHA
     );
 
 
@@ -136,13 +126,13 @@ public class RequestAPI {
         if (params == null) {
             params = new HashMap<>();
         }
-        params.put("app", AppInfo.APP_NAME);
-        params.put("via", AppInfo.via);
-        params.put("cver", AppInfo.cver_name);
-        params.put("ver",AppInfo.ver);
-        params.put("version_code", AppInfo.cver_code);
-        params.put("uuid", AppInfo.uuid);
-        params.put("channel_id", AppInfo.qudao_code);
+//        params.put("app", AppInfo.APP_NAME);
+//        params.put("via", AppInfo.via);
+//        params.put("cver", AppInfo.cver_name);
+//        params.put("ver", AppInfo.ver);
+//        params.put("version_code", AppInfo.cver_code);
+//        params.put("uuid", AppInfo.uuid);
+//        params.put("channel_id", AppInfo.qudao_code);
         return params;
     }
 

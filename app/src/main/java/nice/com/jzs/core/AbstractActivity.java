@@ -394,7 +394,8 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
                     JICHEApplication.getInstance().gotoLogin(AbstractActivity.this);
                     return;
                 } else {
-                    requestParams.put("token", JICHEApplication.getInstance().getAccount().token);
+//                    requestParams.put("token", JICHEApplication.getInstance().getAccount().token);
+                    requestParams.put("phone", JICHEApplication.getInstance().getAccount().mobile);
                 }
             }
 
@@ -434,7 +435,7 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
 //            if (isPost) {
 //                doRequestPOSTByOkHttpUtils(absoluteUrl, params);
 //            } else {
-                doRequestGETByOkHttpUtils(absoluteUrl, params);
+            doRequestGETByOkHttpUtils(absoluteUrl, params);
 //            }
             NiceLogUtil.request(apiUrl, completeUrl, params);
         }
@@ -468,6 +469,7 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
             OkHttpUtils.post()
                     .addFile("file", "file", file)//
                     .url(absoluteUrl)//
+                    .params(params)
                     .tag(AbstractActivity.this)
                     .build()//
                     .execute(new NiceOkHttpCallBack());
@@ -482,12 +484,14 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
                     JICHEApplication.getInstance().gotoLogin(AbstractActivity.this);
                     return;
                 } else {
-                    requestParams.put("token", JICHEApplication.getInstance().getAccount().token);
+//                    requestParams.put("token", JICHEApplication.getInstance().getAccount().token);
+                    requestParams.put("phone", JICHEApplication.getInstance().getAccount().mobile);
                 }
             }
 
             absoluteUrl = RequestAPI.getAbsoluteUrl(url);
             params = RequestAPI.configRequestParams(requestParams);
+
 
             // 没有网络或不需要网络判断
             if (isNetWork && !NetWorkUtil.NETWORK) {
@@ -634,7 +638,7 @@ public abstract class AbstractActivity extends AbstractCoreActivity {
                 loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "modify_gender.json", clazz));
             } else if (RequestAPI.API_JZB_LOGIN_PHONE.contains(url)) {
                 loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "login_phone.json", clazz));
-            }else if (RequestAPI.API_JZB_ZICHA_LIST.contains(url)) {
+            } else if (RequestAPI.API_JZB_ZICHA_LIST.contains(url)) {
                 loadSuccess(DataCreateFactory.getDatas(AbstractActivity.this, "test_data", "zicha_list.json", clazz));
             }
         }

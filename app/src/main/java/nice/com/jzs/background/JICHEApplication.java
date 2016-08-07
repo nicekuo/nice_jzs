@@ -221,6 +221,13 @@ public class JICHEApplication extends CoreApplication {
         activity.startActivity(intent);
     }
 
+    public void gotoHomeZicha(Activity activity) {
+        Intent intent = new Intent(activity, MainActivity_.class);
+        intent.putExtra(ConfigValue.kIntentType, ConfigValue.kIntentTypeInApp);
+        intent.putExtra(ConfigValue.kLaunchMainAcKey, ConfigValue.kLaunchMainAcTypeShowZicha);
+        activity.startActivity(intent);
+    }
+
     public void showJsonErrorToast() {
         ToastUtil.showToastMessage(getApplicationContext(), getResources().getString(R.string.json_error));
     }

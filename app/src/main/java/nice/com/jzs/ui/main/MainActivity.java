@@ -111,10 +111,12 @@ public class MainActivity extends AbstractActivity {
     }
 
     public void parseIntentInMainActivity(Intent intent) {
-
         String type = intent.getStringExtra(ConfigValue.kLaunchMainAcKey);
         if (ConfigValue.kLaunchMainAcTypeShowHome.equals(type)) {
             doShowHome();
+        }
+        if (ConfigValue.kLaunchMainAcTypeShowZicha.equals(type)){
+            doShowZICHA();
         }
     }
 
@@ -258,10 +260,14 @@ public class MainActivity extends AbstractActivity {
      * 展示周边的商品列表
      */
     void doShowZICHA() {
-        doResetTabIcon();
-        id_zicha_image.setBackgroundResource(R.drawable.icon_home_zicha_pressed);
-        id_shop_text.setTextColor(getResources().getColor(R.color.blue));
-        doShowFragment(ZICHA);
+        if (JICHEApplication.getInstance().getLoginState()) {
+            doResetTabIcon();
+            id_zicha_image.setBackgroundResource(R.drawable.icon_home_zicha_pressed);
+            id_shop_text.setTextColor(getResources().getColor(R.color.blue));
+            doShowFragment(ZICHA);
+        } else {
+            JICHEApplication.getInstance().gotoLogin(MainActivity.this);
+        }
     }
 
     /**
@@ -345,7 +351,7 @@ public class MainActivity extends AbstractActivity {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (ConfigValue.kPushTokenUpdate.equals(action)) {
-                setPushToken();
+//                setPushToken();
             }
         }
     };

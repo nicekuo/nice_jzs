@@ -252,28 +252,24 @@
             android:name="nice.com.jzs.ui.doctors.ActivityDoctorVisitTime_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
             android:name="nice.com.jzs.ui.register.ActivityRegisterOne_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
             android:name="nice.com.jzs.ui.register.ActivityRegisterTwo_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
             android:name="nice.com.jzs.ui.register.ActivityRegisterPassword_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
 
@@ -281,7 +277,6 @@
             android:name="nice.com.jzs.ui.register.ActivityRegisterNickName_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
 
@@ -289,77 +284,66 @@
             android:name="nice.com.jzs.ui.register.ActivityRegisterGender_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
             android:name="nice.com.jzs.ui.register.ActivityRegisterBorn_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
             android:name="nice.com.jzs.ui.zicha.ActivityZichaOne_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
         android:name="nice.com.jzs.ui.zicha.ActivityZichaTwo_"
         android:configChanges="keyboardHidden|orientation|screenSize"
         android:screenOrientation="portrait"
-        android:theme="@style/teshu_color_style"
         android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
             android:name="nice.com.jzs.ui.zicha.ActivityZichaThree_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
             android:name="nice.com.jzs.ui.zicha.ActivityZichaFour_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
             android:name="nice.com.jzs.ui.zicha.ActivityZichaFive_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
             android:name="nice.com.jzs.ui.setting.ActivityLogin_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
             android:name="nice.com.jzs.ui.register.ActivityModifyPasswordPhone_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
             android:name="nice.com.jzs.ui.register.ActivityModifyPasswordCode_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
             android:name="nice.com.jzs.ui.register.ActivityModifyPassword_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
 
@@ -367,7 +351,6 @@
             android:name="nice.com.jzs.ui.zicha.ActivityZichaResult_"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/teshu_color_style"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
 

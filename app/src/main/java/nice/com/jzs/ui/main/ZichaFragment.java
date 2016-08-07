@@ -2,11 +2,11 @@ package nice.com.jzs.ui.main;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
@@ -16,12 +16,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.finalteam.loadingviewfinal.ListViewFinal;
+import cn.finalteam.loadingviewfinal.SwipeRefreshLayoutFinal;
 import nice.com.jzs.R;
 import nice.com.jzs.background.RequestAPI;
 import nice.com.jzs.core.AbstractActivity;
 import nice.com.jzs.core.AbstractFragment;
+import nice.com.jzs.ui.ErrorViewForReload;
 import nice.com.jzs.ui.zicha.ActivityZichaOne_;
 import nice.com.jzs.ui.zicha.ViewZichaListItem;
 import nice.com.jzs.ui.zicha.ZichaListBean;
@@ -35,10 +37,14 @@ import nice.com.nice_library.bean.BaseBean;
  * @description 商家列表主界面
  */
 @EFragment(R.layout.fragment_zicha)
-public class ZichaFragment extends AbstractFragment {
+public class ZichaFragment extends AbstractFragment implements SwipeRefreshLayout.OnRefreshListener {
 
-    @ViewById(R.id.list)
-    ListView listView;
+    @ViewById(R.id.news_list)
+    ListViewFinal newsList;
+    @ViewById(R.id.errorView)
+    ErrorViewForReload errorView;
+    @ViewById(R.id.refresh_layout)
+    SwipeRefreshLayoutFinal refreshLayout;
 
     @ViewById(R.id.xiaoren)
     ImageView xiaoren;
@@ -47,7 +53,10 @@ public class ZichaFragment extends AbstractFragment {
 
     @AfterViews
     void init() {
-        xiaoren.setImageResource(R.drawable.icon_me_clear);
+        refreshLayout.setOnRefreshListener(this);
+        refreshLayout.autoRefresh();
+
+        xiaoren.setImageResource(R.drawable.icon_home_zicha_unpressed);
         xiaoren.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,32 +66,43 @@ public class ZichaFragment extends AbstractFragment {
         getList();
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        if (isVisibleToUser) {
+            if (refreshLayout != null) {
+                refreshLayout.autoRefresh();
+            }
+        }
+    }
 
     private void getList() {
         Map<String, String> map = new HashMap<>();
         ((AbstractActivity) getActivity()).new NiceAsyncTask(false) {
             @Override
             public void loadSuccess(BaseBean bean) {
+                refreshLayout.onRefreshComplete();
                 ZichaListBean listBean = (ZichaListBean) bean;
                 if (listBean.getData() != null && listBean.getData() != null) {
-                    adapter = new ZichaListAdapter(listBean.getData(), getActivity(), null, null);
-                    listView.setAdapter(adapter);
+                    if (adapter == null) {
+                        adapter = new ZichaListAdapter(listBean.getData(), getActivity(), null, null);
+                        newsList.setAdapter(adapter);
+                    } else {
+                        adapter.setData(listBean.getData());
+                        adapter.notifyDataSetChanged();
+                    }
                 }
             }
 
             @Override
             public void exception() {
-
+                refreshLayout.onRefreshComplete();
             }
-        }.post(RequestAPI.API_JZB_ZICHA_LIST, map, ZichaListBean.class);
+        }.post(false,RequestAPI.API_JZB_ZICHA_LIST, map, ZichaListBean.class);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, rootView);
-        return rootView;
+    public void onRefresh() {
+        getList();
     }
 
 

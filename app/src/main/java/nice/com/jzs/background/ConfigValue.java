@@ -50,6 +50,8 @@ public class ConfigValue {
 
     public static final String kLaunchMainAcTypeShowHome = "lanuch_main_activity_show_home";
 
+    public static final String kLaunchMainAcTypeShowZicha = "lanuch_main_activity_show_zicha";
+
     public static final String ACTION_LOGOIN_STATUS_CHANGED = "login_status_change";
     public static final String ACTION_DATA_KEY = "is_login";
     public static final String ACTION_DATA_VALUE_OUT = "out";

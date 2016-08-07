@@ -179,7 +179,7 @@ public class ActivityPersonalCenter extends AbstractActivity {
 
     private void doQuite() {
 
-        quiteFromServer();
+//        quiteFromServer();
 
 
         JICHEApplication.getInstance().clearToken();

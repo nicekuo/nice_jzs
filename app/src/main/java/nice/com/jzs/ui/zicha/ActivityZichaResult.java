@@ -1,5 +1,6 @@
 package nice.com.jzs.ui.zicha;
 
+import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import java.util.Map;
 
 import nice.com.jzs.R;
 import nice.com.jzs.background.AppInfo;
+import nice.com.jzs.background.JICHEApplication;
 import nice.com.jzs.background.RequestAPI;
 import nice.com.jzs.core.AbstractActivity;
 import nice.com.jzs.ui.doctors.DoctorItemBean;
@@ -31,6 +33,9 @@ public class ActivityZichaResult extends AbstractActivity {
     @Extra
     String degree;
 
+    @Extra
+    String id;
+
     @ViewById(R.id.diagnosed)
     TextView diagnosed;
     @ViewById(R.id.degree)
@@ -43,7 +48,32 @@ public class ActivityZichaResult extends AbstractActivity {
 
     @AfterViews
     void initView() {
-        addZichaRecord();
+        if (TextUtils.isEmpty(id) && !TextUtils.isEmpty(url)) {
+            addZichaRecord();
+        } else {
+            getZichaDetail();
+        }
+    }
+
+    private void getZichaDetail() {
+        Map<String, String> map = new HashMap<>();
+        map.put("id", id);
+        new NiceAsyncTask(false) {
+
+            @Override
+            public void loadSuccess(BaseBean bean) {
+                ZichaResultBean resultBean = (ZichaResultBean) bean;
+                if (resultBean.getData() != null) {
+                    updateView(resultBean);
+                }
+
+            }
+
+            @Override
+            public void exception() {
+
+            }
+        }.post(RequestAPI.API_JZB_ZICHA_DETAIL, map, ZichaResultBean.class);
     }
 
     private void addZichaRecord() {
@@ -93,7 +123,17 @@ public class ActivityZichaResult extends AbstractActivity {
 
     @Override
     protected void onClickBack() {
-        finish();
+        if (TextUtils.isEmpty(id)) {
+            JICHEApplication.getInstance().gotoHomeZicha(ActivityZichaResult.this);
+            finish();
+        } else {
+            finish();
+        }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        onClickBack();
+    }
 }

@@ -8,13 +8,38 @@
     <include layout="@layout/home_home_title" />
 
 
-    <ListView
-        android:id="@+id/list"
+    <cn.finalteam.loadingviewfinal.SwipeRefreshLayoutFinal
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white"><!--设置loading颜色-->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <cn.finalteam.loadingviewfinal.ListViewFinal
+                android:id="@+id/news_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"
+                app:noLoadMoreHideView="false" />
 
 
-    </ListView>
+            <nice.com.jzs.ui.ErrorViewForReload
+                android:id="@+id/errorView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                />
+
+            <!--默认false-->
+            <!--app:loadMoreMode="click|scroll"&lt;!&ndash;默认scroll&ndash;&gt;-->
+            <!--app:loadMoreView="cn.finalteam.loadingviewfinal.DefaultLoadMoreView"&lt;!&ndash;默认DefaultLoadMoreView，可在Java中配置&ndash;&gt;-->
+            <!--app:noLoadMoreHideView="false"&lt;!&ndash;没有更多了是否隐藏footerview&ndash;&gt;-->
+        </FrameLayout>
+    </cn.finalteam.loadingviewfinal.SwipeRefreshLayoutFinal>
 
 
 
